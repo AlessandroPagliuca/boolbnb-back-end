@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->tinyInteger('rooms');
             $table->tinyInteger('beds');
             $table->tinyInteger('bathrooms');
-            $table->tinyInteger('square_meters');
+            $table->smallInteger('square_meters');
             $table->string('address');
             $table->decimal('latitude', 8, 6);
             $table->decimal('longitude', 9, 6);
