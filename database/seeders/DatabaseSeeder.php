@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Mail\Events\MessageSent;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,13 +16,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            User::class,
-            Apartment::class,
-            Message::class,
-            View::class,
-            Image::class,
-            Service::class,
-            Sponsorship::class,
+            UserSeeder::class,
+            ApartmentSeeder::class,
+            MessageSeeder::class,
+            ViewSeeder::class,
+            ImageSeeder::class,
+            ServiceSeeder::class,
+            SponsorshipSeeder::class,
         ]);
     }
 }
