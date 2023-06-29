@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Host;
 
+use App\Http\Controllers\Controller;
 use App\Models\View;
 use App\Http\Requests\StoreViewRequest;
 use App\Http\Requests\UpdateViewRequest;
@@ -11,7 +12,6 @@ class ViewController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -21,7 +21,6 @@ class ViewController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -32,7 +31,6 @@ class ViewController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreViewRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(StoreViewRequest $request)
     {
@@ -43,7 +41,6 @@ class ViewController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\View  $view
-     * @return \Illuminate\Http\Response
      */
     public function show(View $view)
     {
@@ -54,7 +51,6 @@ class ViewController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\View  $view
-     * @return \Illuminate\Http\Response
      */
     public function edit(View $view)
     {
@@ -66,7 +62,6 @@ class ViewController extends Controller
      *
      * @param  \App\Http\Requests\UpdateViewRequest  $request
      * @param  \App\Models\View  $view
-     * @return \Illuminate\Http\Response
      */
     public function update(UpdateViewRequest $request, View $view)
     {
@@ -77,7 +72,6 @@ class ViewController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\View  $view
-     * @return \Illuminate\Http\Response
      */
     public function destroy(View $view)
     {
