@@ -14,6 +14,6 @@ class ViewSeeder extends Seeder
      */
     public function run()
     {
-        //
+        //NON SERVE
     }
 }

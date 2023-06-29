@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
     use HasFactory;
+
+    protected $table = 'messages';
+
+    protected $guarded = [];
+
+    // Define the inverse relationship with the apartment
+    public function apartment()
+    {
+        return $this->belongsTo(Apartment::class);
+    }
 }
