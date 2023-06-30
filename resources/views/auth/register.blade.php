@@ -27,7 +27,7 @@
                                     @enderror
                                 </div>
                             </div>
-
+                            <!--SURNAME-->
                             <div class="mb-4 row">
                                 <label for="surname"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
@@ -38,6 +38,24 @@
                                         value="{{ old('surname') }}" required autocomplete="surname" autofocus>
 
                                     @error('surname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <!--date_of_birth-->
+                            <div class="mb-4 row">
+                                <label for="date_of_birth"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Date of birth') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="date_of_birth" type="date"
+                                        class="form-control @error('date_of_birth') is-invalid @enderror"
+                                        name="date_of_birth" value="{{ old('date_of_birth') }}" required
+                                        autocomplete="date_of_birth" autofocus>
+
+                                    @error('date_of_birth')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
