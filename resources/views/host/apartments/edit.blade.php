@@ -5,6 +5,8 @@
 
 
     <h1>Modifica il tuo Appartamento: {{ $apartment->title }}</h1>
+    <a class="m-1" href="{{ route('host.apartments.show', $apartment->slug) }}"><button
+        class="btn btn-warning"> Show</button></a>
 
     <form action="{{ route('host.apartments.update', $apartment->slug) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -133,8 +135,6 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div> --}}
-
-
         <button type="submit" class="btn btn-success">Save</button>
         <button type="reset" class="btn btn-primary">Reset</button>
     </form>
