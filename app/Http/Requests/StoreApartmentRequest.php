@@ -26,6 +26,7 @@ class StoreApartmentRequest extends FormRequest
         return [
             'title' => 'required|max:100|min:3',
             'description' => 'required|min:10',
+            'main_img' => 'required|min:3|max:255',
             'rooms' => 'required|min:1|max:6',
             'beds' => 'required|min:1|max:10',
             'bathrooms' => 'required|min:1|max:3',
@@ -33,7 +34,7 @@ class StoreApartmentRequest extends FormRequest
             'address' => 'requied|min:3|max:255',
             'latitude' => 'required|min:-90|max:90',
             'longitude' => 'required|min:-180|max:180',
-            'visible' => 'required',
+            'visible' => 'nullable',
             'price' => 'required|numeric|min:1|max:99999|regex:/^\d+(\.\d{2})?$/',
             'user_id' => 'nullable|exists:users,id',
         ];

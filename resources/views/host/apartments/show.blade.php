@@ -77,7 +77,7 @@
                 </div> --}}
 
                 <div class="col-12">
-                    <a class="m-1 btn btn-success" href="{{ route('host.apartments.edit', $apartment->id) }}">
+                    <a class="m-1 btn btn-success" href="{{ route('host.apartments.edit', $apartment->slug) }}">
                         Edit
                     </a>
                     <a class="m-1 btn btn-warning" href="{{ route('host.apartments.index') }}">

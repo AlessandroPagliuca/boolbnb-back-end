@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('title', 100);
             $table->string('slug');
             $table->text('description');
+            $table->string('main_img');
             $table->tinyInteger('rooms');
             $table->tinyInteger('beds');
             $table->tinyInteger('bathrooms');

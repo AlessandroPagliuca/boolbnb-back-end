@@ -7,6 +7,7 @@ use App\Models\Apartment;
 use App\Http\Requests\StoreApartmentRequest;
 use App\Http\Requests\UpdateApartmentRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Service;
 use App\Models\Message;
@@ -26,10 +27,8 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-
-        $images = Image::all();
         $apartments = Apartment::paginate(6);
-        return view('host.apartments.index', compact('apartments', 'images'));
+        return view('host.apartments.index', compact('apartments'));
     }
 
     /**
@@ -39,20 +38,20 @@ class ApartmentController extends Controller
     public function create()
     {
 
-        $data = [
-            $images = Image::all(),
-            $services = Service::all(),
-            $sponsorships = Sponsorship::all(),
-            $views = View::all(),
-        ];
 
-        return view('host.apartments.create', compact('data'));
+        $images = Image::all();
+        $services = Service::all();
+        $sponsorships = Sponsorship::all();
+        $views = View::all();
+
+
+        return view('host.apartments.create', compact('images', 'services', 'sponsorships', 'views'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreApartmentRequest  $request
+     * @param  \App\Http\Requests\StoreApartmentRequest $request
      */
     public function store(StoreApartmentRequest $request)
     {
@@ -90,13 +89,11 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        $data = [
-            $images = Image::all(),
-            $services = Service::all(),
-            $sponsorships = Sponsorship::all(),
-            $views = View::all(),
-        ];
-        return view('host.apartments.edit', compact('apartment', 'data'));
+        $images = Image::all();
+        $services = Service::all();
+        $sponsorships = Sponsorship::all();
+        $views = View::all();
+        return view('host.apartments.edit', compact('apartment', 'images', 'services', 'sponsorships', 'views'));
     }
 
     /**

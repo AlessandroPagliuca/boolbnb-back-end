@@ -4,11 +4,11 @@
 <div class="container">
 
     <h1>Aggiungi un nuovo appartamento</h1>
-    <form action="{{ route('host.apartments.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('host.apartments.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="title">Titolo</label>
-            <input type="text" class="form-control @error('title') is-invali
+            <input type="text" class="form-control @error('title') is-invalid
 
             @enderror" name="title" id="title" >
 
@@ -21,7 +21,7 @@
         </div>
         <div class="mb-3">
             <label for="description">Descrizione</label>
-            <input type="text" class="form-control @error('description') is-invali
+            <input type="text" class="form-control @error('description') is-invalid
 
             @enderror" name="description" id="description" >
 
@@ -34,7 +34,7 @@
         </div>
         <div class="mb-3">
             <label for="rooms">Camere</label>
-            <input type="number" class="form-control @error('rooms') is-invali
+            <input type="number" class="form-control @error('rooms') is-invalid
 
             @enderror" name="rooms" id="rooms" >
 
@@ -47,7 +47,7 @@
         </div>
         <div class="mb-3">
             <label for="beds">Posti letto</label>
-            <input type="number" class="form-control @error('beds') is-invali
+            <input type="number" class="form-control @error('beds') is-invalid
 
             @enderror" name="beds" id="beds" >
 
@@ -60,7 +60,7 @@
         </div>
         <div class="mb-3">
             <label for="bathrooms">Bagni</label>
-            <input type="number" class="form-control @error('bathrooms') is-invali
+            <input type="number" class="form-control @error('bathrooms') is-invalid
 
             @enderror" name="bathrooms" id="bathrooms" >
 
@@ -73,7 +73,7 @@
         </div>
         <div class="mb-3">
             <label for="square_meters">Metri quadrati</label>
-            <input type="number" class="form-control @error('square_meters') is-invali
+            <input type="number" class="form-control @error('square_meters') is-invalid
 
             @enderror" name="square_meters" id="square_meters" >
 
@@ -86,7 +86,7 @@
         </div>
         <div class="mb-3">
             <label for="address">Indirizzo</label>
-            <input type="text" class="form-control @error('address') is-invali
+            <input type="text" class="form-control @error('address') is-invalid
 
             @enderror" name="address" id="address" >
 
@@ -99,7 +99,7 @@
         </div>
         <div class="mb-3">
             <label for="latitude">Latitudine</label>
-            <input type="text" class="form-control @error('latitude') is-invali
+            <input type="text" class="form-control @error('latitude') is-invalid
 
             @enderror" name="latitude" id="latitude" >
 
@@ -112,7 +112,7 @@
         </div>
         <div class="mb-3">
             <label for="longitude">Longitudine</label>
-            <input type="text" class="form-control @error('longitude') is-invali
+            <input type="text" class="form-control @error('longitude') is-invalid
 
             @enderror" name="longitude" id="longitude" >
 
@@ -126,7 +126,7 @@
         {{-- <div class="mb-3">
             <label for="visible">Visibile</label>
             {{-- <input type="checkbox" class="form-control" name="visible" id="visible" >
-            <input type="checkbox" class="form-control @error('visible') is-invali
+            <input type="checkbox" class="form-control @error('visible') is-invalid
 
             @enderror" name="visible" id="visible" >
 
@@ -139,8 +139,7 @@
         </div> --}}
         <div class="mb-3">
             <label for="price">Prezzo per notte</label>
-            <input type="text" class="form-control @error('price') is-invali
-
+            <input type="text" class="form-control @error('price') is-invalid
             @enderror" name="price" id="price" >
 
             @error('price')
@@ -150,6 +149,33 @@
 
             @enderror
         </div>
+        <div class="form-group">
+            <p class="text-dark">Select one or more services:</p>
+            @foreach ($services as $service)
+                <div class="text-dark">
+                    <input type="checkbox" name="services[]" value="{{ $service->id }}" class="form-check-input"
+                        {{ in_array($service->id, old('tags', [])) ? 'checked' : '' }}>
+                    <label for="services[]" class="form-check-label">{{ $service->icon }} {{ $service->name }}</label>
+                </div>
+            @endforeach
+            @error('services')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <p class="text-dark">Select one or more services:</p>
+            @foreach ($sponsorships as $sponsorship)
+                <div class="text-dark">
+                    <input type="checkbox" name="sponsorships[]" value="{{ $sponsorship->id }}" class="form-check-input"
+                        {{ in_array($service->id, old('sponsorships', [])) ? 'checked' : '' }}>
+                    <label for="sponsorships[]" class="form-check-label">{{ $sponsorship->name }} {{ $sponsorship->price }} {{ $sponsorship->duration }} {{ $sponsorship->description }}</label>
+                </div>
+            @endforeach
+            @error('sponsorships')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
 
 
         <button type="submit" class="btn btn-success">Save</button>
@@ -157,3 +183,5 @@
     </form>
 </div>
 @endsection
+
+

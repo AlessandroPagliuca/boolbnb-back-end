@@ -23,10 +23,7 @@
                             </div>
 
                             <div>
-
-                                @foreach ($apartment->images as $image)
-                                    <img src="{{ $apartment->images ? $apartment->type->img : 'No type' }}" alt="caio">
-                                @endforeach
+                                <img class="img-fluid" src="{{ $apartment->main_img }}" alt="caio">
                             </div>
 
                             <div class="card-body">
@@ -51,7 +48,7 @@
 
 
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a class="m-1" href="{{ route('host.apartments.show', $apartment->id) }}"><button
+                                    <a class="m-1" href="{{ route('host.apartments.show', $apartment->slug) }}"><button
                                             class="btn btn-warning"> Show</button></a>
 
                                     <form action="{{ route('host.apartments.destroy', $apartment->id) }}" method="POST">

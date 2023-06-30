@@ -89,11 +89,11 @@ class UserSeeder extends Seeder
 
         foreach ($users as $user) {
             $newUser = new User();
-            $newUser->name = $user;
-            $newUser->surname = $user;
-            $newUser->date_of_birth = $user;
-            $newUser->email = $user;
-            $newUser->password = $user;
+            $newUser->name = $user['name'];
+            $newUser->surname = $user['surname'];
+            $newUser->date_of_birth = $user['date_of_birth'];
+            $newUser->email = $user['email'];
+            $newUser->password = $user['password'];
             $newUser->save();
         }
 
