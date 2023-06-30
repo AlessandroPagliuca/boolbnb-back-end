@@ -90,6 +90,11 @@
                             </div>
 
                             <div class="mb-4 row mb-0">
+
+                                <div class="text-center">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </div>
+
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Register') }}
