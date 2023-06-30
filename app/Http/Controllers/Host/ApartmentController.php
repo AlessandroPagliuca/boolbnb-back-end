@@ -54,11 +54,11 @@ class ApartmentController extends Controller
      */
     public function store(StoreApartmentRequest $request)
     {
-        $data = $request->validated();
+        $form_data = $request->validated();
         $slug = Str::slug($request->title, '-');
-        $data['slug'] = $slug;
+        $form_data['slug'] = $slug;
 
-        $newApartment = Apartment::create($data);
+        $newApartment = Apartment::create($form_data);
 
         if ($request->has('services')) {
             $newApartment->services()->attach($request->services);
@@ -67,8 +67,8 @@ class ApartmentController extends Controller
             $newApartment->sponsorships()->attach($request->sponsorships);
         }
 
-        return redirect()->route('host.apartments.show', [$newApartment->title])
-            ->with('message', "L'appartamento {$newApartment->name} è stato aggiunto con successo! :)");
+        return redirect()->route('host.apartments.show', $newApartment->slug);
+            // ->with('message', "L'appartamento {$newApartment->name} è stato aggiunto con successo! :)");
     }
 
     /**
