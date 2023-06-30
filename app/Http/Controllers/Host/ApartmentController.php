@@ -26,8 +26,10 @@ class ApartmentController extends Controller
      */
     public function index()
     {
+
+        $images = Image::all();
         $apartments = Apartment::paginate(6);
-        return view('host.apartments.index', compact('apartments'));
+        return view('host.apartments.index', compact('apartments', 'images'));
     }
 
     /**

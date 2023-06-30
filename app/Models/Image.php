@@ -8,13 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory;
-    protected $table = 'images';
 
     protected $guarded = [];
 
     // Define the inverse relationship with the apartment
-    public function apartment()
+    public function apartments()
     {
-        return $this->belongsTo(Apartment::class);
+        return $this->hasMany(Apartment::class);
     }
 }

@@ -20,9 +20,9 @@ class Apartment extends Model
         return $this->hasMany(Messages::class);
     }
 
-    public function images()
+    public function image()
     {
-        return $this->hasMany(Images::class);
+        return $this->belongsTo(Image::class);
     }
 
     public function services()
