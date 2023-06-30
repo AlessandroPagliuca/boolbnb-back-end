@@ -47,7 +47,7 @@ class ServiceSeeder extends Seeder
             ],
             [
                 'name' => 'Sea View',
-                'icon' => '<i class="fas fa-water"></i>',
+                'icon' => '<i class="fa-solid fa-water"></i>',
             ],
         ];
 
