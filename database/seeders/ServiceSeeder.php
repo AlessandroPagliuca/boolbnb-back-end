@@ -31,7 +31,7 @@ class ServiceSeeder extends Seeder
             ],
             [
                 'name' => 'Aria condizionata',
-                'icon' => '<i class="fa-solid fa-wind"></i>',
+                'icon' => '<i class="fa-light fa-air-conditioner"></i>',
             ],
             [
                 'name' => 'Colazione inclusa',
@@ -46,9 +46,57 @@ class ServiceSeeder extends Seeder
                 'icon' => '<i class="fa-solid fa-dumbbell"></i>',
             ],
             [
-                'name' => 'Sea View',
-                'icon' => '<i class="fas fa-water"></i>',
+                'name' => 'Vista Mare',
+                'icon' => '<i class="fa-solid fa-water"></i>',
             ],
+            [
+                'name' => 'Giardino',
+                'icon' => '<i class="fa-solid fa-flower-tulip"></i>',
+            ],
+            [
+                'name' => 'Barbecue',
+                'icon' => '<i class="fa-solid fa-grill-hot"></i>',
+            ],
+            [
+                'name' => 'Riscaldamento',
+                'icon' => '<i class="fa-solid fa-temperature-high"></i>',
+            ],
+            [
+                'name' => 'Patio o balcone',
+                'icon' => '<i class="fa-solid fa-window-frame-open"></i>',
+            ],
+            [
+                'name' => 'Biancheria da letto',
+                'icon' => '<i class="fa-solid fa-blanket"></i>',
+            ],
+            [
+                'name' => 'Doccia',
+                'icon' => '<i class="fa-solid fa-shower"></i>',
+            ],
+            [
+                'name' => 'Vasca',
+                'icon' => '<i class="fa-solid fa-bath"></i>',
+            ],
+            [
+                'name' => 'Lavatrice',
+                'icon' => '<i class="fa-solid fa-washing-machine"></i>',
+            ],
+            [
+                'name' => 'Asciugatrice',
+                'icon' => '<i class="fa-solid fa-dryer-heat"></i>',
+            ],
+            [
+                'name' => 'TV',
+                'icon' => '<i class="fa-solid fa-tv"></i>',
+            ],
+            [
+                'name' => 'Cucina',
+                'icon' => '<i class="fa-solid fa-kitchen-set"></i>',
+            ],
+
+
+
+
         ];
 
         DB::table('services')->insert($services);
