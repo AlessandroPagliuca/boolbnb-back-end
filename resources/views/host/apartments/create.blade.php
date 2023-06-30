@@ -139,7 +139,7 @@
         </div> --}}
         <div class="mb-3">
             <label for="price">Prezzo per notte</label>
-            <input type="text" class="form-control @error('price') is-invalid
+            <input type="number" class="form-control @error('price') is-invalid
             @enderror" name="price" id="price" >
 
             @error('price')

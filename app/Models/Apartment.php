@@ -17,7 +17,7 @@ class Apartment extends Model
 
     public function messages()
     {
-        return $this->hasMany(Messages::class);
+        return $this->hasMany(Message::class);
     }
 
     public function image()
@@ -27,7 +27,7 @@ class Apartment extends Model
 
     public function services()
     {
-        return $this->belongsToMany(Services::class);
+        return $this->belongsToMany(Service::class);
     }
 
     public function sponsorships()

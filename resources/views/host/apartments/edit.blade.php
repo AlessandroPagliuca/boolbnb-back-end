@@ -13,9 +13,17 @@
         @method('PUT')
         <div class="mb-3">
             <label for="title">Nome</label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-                value="{{ old('name', $apartment->title) }}">
+            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title"
+                value="{{ old('title', $apartment->title) }}">
             @error('title')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="main_img">immagine</label>
+            <input type="text" class="form-control @error('main_img') is-invalid @enderror" name="main_img" id="main_img"
+                value="{{ old('main_img', $apartment->main_img) }}">
+            @error('main_img')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
