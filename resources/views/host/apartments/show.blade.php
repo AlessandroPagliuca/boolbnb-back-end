@@ -11,47 +11,47 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="fw-bold fs-2 py-4">Nome appartamento: {{ $apartment->title }}</h1>
+                    <h1 class="fw-bold fs-2 py-4">Name apartment: {{ $apartment->title }}</h1>
 
                 </div>
                 <div class="col-12">
-                    <p class="badge badge-pill bg-dark p-2">Descrizione: {{ $apartment->description }}</p>
+                    <p class="badge badge-pill bg-dark p-2">Description: {{ $apartment->description }}</p>
 
                 </div>
                 <div class="col-12">
-                    <p class="badge badge-pill bg-dark  p-2">Camere: {{ $apartment->rooms }}</p>
+                    <p class="badge badge-pill bg-dark  p-2">Rooms: {{ $apartment->rooms }}</p>
 
                 </div>
                 <div class="col-12">
-                    <p class="badge badge-pill bg-dark p-2">Posti letto: {{ $apartment->beds }}</p>
+                    <p class="badge badge-pill bg-dark p-2">Beds: {{ $apartment->beds }}</p>
 
                 </div>
                 <div class="col-12">
-                    <p class="badge badge-pill bg-dark p-2">Bagni: {{ $apartment->bathrooms }}</p>
+                    <p class="badge badge-pill bg-dark p-2">Bathrooms: {{ $apartment->bathrooms }}</p>
 
                 </div>
                 <div class="col-12 ">
-                    <p class="badge badge-pill bg-dark p-2">Metri quadrati: {{ $apartment->square_meters }}</p>
+                    <p class="badge badge-pill bg-dark p-2">Square meters: {{ $apartment->square_meters }}</p>
 
                 </div>
                 <div class="col-12 ">
-                    <p class="badge badge-pill bg-dark p-2">Indirizzo: {{ $apartment->address }}</p>
+                    <p class="badge badge-pill bg-dark p-2">Address: {{ $apartment->address }}</p>
 
                 </div>
                 <div class="col-12 ">
-                    <p class="badge badge-pill bg-dark p-2">Latitudine: {{ $apartment->latitude }}</p>
+                    <p class="badge badge-pill bg-dark p-2">Latitude: {{ $apartment->latitude }}</p>
 
                 </div>
                 <div class="col-12 ">
-                    <p class="badge badge-pill bg-dark p-2">Longitudine: {{ $apartment->longitude }}</p>
+                    <p class="badge badge-pill bg-dark p-2">Longitude: {{ $apartment->longitude }}</p>
 
                 </div>
                 <div class="col-12 ">
-                    <p class="badge badge-pill bg-dark p-2">Visibilità: {{ $apartment->visible }}</p>
+                    <p class="badge badge-pill bg-dark p-2">Visible: {{ $apartment->visible }}</p>
 
                 </div>
                 <div class="col-12 ">
-                    <p class="badge badge-pill bg-dark p-2">Prezzo per notte: {{ $apartment->price }}</p>
+                    <p class="badge badge-pill bg-dark p-2">price per night: {{ $apartment->price }}</p>
 
                 </div>
                 {{-- <div class="col-12">

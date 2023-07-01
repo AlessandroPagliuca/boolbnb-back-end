@@ -3,11 +3,11 @@
 @section('content')
 <div class="container">
 
-    <h1>Aggiungi un nuovo appartamento</h1>
+    <h1>Add your apartments</h1>
     <form action="{{ route('host.apartments.store') }}" method="POST">
         @csrf
         <div class="mb-3">
-            <label for="title">Titolo</label>
+            <label for="title">Title</label>
             <input type="text" class="form-control @error('title') is-invalid
 
             @enderror" name="title" id="title" >
@@ -21,7 +21,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="main_img">Immagine</label>
+            <label for="main_img">Image</label>
             <input type="text"  class="form-control @error('main_img') is-invalid
             {{-- cambiare text in file  --}}
              @enderror" name="main_img" id="main_img" >
@@ -34,7 +34,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="description">Descrizione</label>
+            <label for="description">Description</label>
             <input type="text" class="form-control @error('description') is-invalid
 
             @enderror" name="description" id="description" >
@@ -47,7 +47,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="rooms">Camere</label>
+            <label for="rooms">Rooms</label>
             <input type="number" class="form-control @error('rooms') is-invalid
 
             @enderror" name="rooms" id="rooms" >
@@ -60,7 +60,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="beds">Posti letto</label>
+            <label for="beds">Beds</label>
             <input type="number" class="form-control @error('beds') is-invalid
 
             @enderror" name="beds" id="beds" >
@@ -73,7 +73,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="bathrooms">Bagni</label>
+            <label for="bathrooms">Bathrooms</label>
             <input type="number" class="form-control @error('bathrooms') is-invalid
 
             @enderror" name="bathrooms" id="bathrooms" >
@@ -86,7 +86,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="square_meters">Metri quadrati</label>
+            <label for="square_meters">Square meters</label>
             <input type="number" class="form-control @error('square_meters') is-invalid
 
             @enderror" name="square_meters" id="square_meters" >
@@ -99,7 +99,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="address">Indirizzo</label>
+            <label for="address">Address</label>
             <input type="text" class="form-control @error('address') is-invalid
 
             @enderror" name="address" id="address" >
@@ -112,7 +112,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="latitude">Latitudine</label>
+            <label for="latitude">Latitude</label>
             <input type="text" class="form-control @error('latitude') is-invalid
 
             @enderror" name="latitude" id="latitude" >
@@ -125,7 +125,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="longitude">Longitudine</label>
+            <label for="longitude">Longitude</label>
             <input type="text" class="form-control @error('longitude') is-invalid
 
             @enderror" name="longitude" id="longitude" >
@@ -152,7 +152,7 @@
             @enderror
         </div> --}}
         <div class="mb-3">
-            <label for="price">Prezzo per notte</label>
+            <label for="price">Price per night</label>
             <input type="number" class="form-control @error('price') is-invalid
             @enderror" name="price" id="price" >
 
@@ -168,8 +168,9 @@
             @foreach ($services as $service)
                 <div class="text-dark">
                     <input type="checkbox" name="services[]" value="{{ $service->id }}" class="form-check-input"
-                        {{ in_array($service->id, old('tags', [])) ? 'checked' : '' }}>
-                    <label for="services[]" class="form-check-label">{{ $service->icon }} {{ $service->name }}</label>
+                        {{ in_array($service->id, old('services', [])) ? 'checked' : '' }}>
+                    <label for="services[]" class="form-check-label">{{ $service->name }}</label>
+                    <i class="fa-solid fa-{{$service->icon}}"></i>
                 </div>
             @endforeach
             @error('services')
@@ -178,11 +179,11 @@
         </div>
 
         <div class="form-group">
-            <p class="text-dark">Select one or more services:</p>
+            <p class="text-dark">Select your sponsorship:</p>
             @foreach ($sponsorships as $sponsorship)
                 <div class="text-dark">
                     <input type="checkbox" name="sponsorships[]" value="{{ $sponsorship->id }}" class="form-check-input"
-                        {{ in_array($service->id, old('sponsorships', [])) ? 'checked' : '' }}>
+                        {{ in_array($sponsorship->id, old('sponsorships', [])) ? 'checked' : '' }}>
                     <label for="sponsorships[]" class="form-check-label">{{ $sponsorship->name }} {{ $sponsorship->price }} {{ $sponsorship->duration }} {{ $sponsorship->description }}</label>
                 </div>
             @endforeach
