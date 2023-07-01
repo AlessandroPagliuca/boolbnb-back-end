@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             ApartmentSeeder::class,
             MessageSeeder::class,
             ViewSeeder::class,
+            ImageSeeder::class,
             ServiceSeeder::class,
             SponsorshipSeeder::class,
         ]);

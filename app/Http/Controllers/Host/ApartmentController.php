@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use App\Http\Requests\StoreApartmentRequest;
 use App\Http\Requests\UpdateApartmentRequest;
+use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -40,10 +41,8 @@ class ApartmentController extends Controller
 
         $services = Service::all();
         $sponsorships = Sponsorship::all();
-        $views = View::all();
 
-
-        return view('host.apartments.create', compact('services', 'sponsorships', 'views'));
+        return view('host.apartments.create', compact('services', 'sponsorships'));
     }
 
     /**
@@ -92,8 +91,8 @@ class ApartmentController extends Controller
     {
         $services = Service::all();
         $sponsorships = Sponsorship::all();
-        $views = View::all();
-        return view('host.apartments.edit', compact('apartment', 'services', 'sponsorships', 'views'));
+
+        return view('host.apartments.edit', compact('apartment', 'services', 'sponsorships'));
     }
 
     /**
@@ -130,15 +129,7 @@ class ApartmentController extends Controller
      * @param  \App\Models\Apartment  $apartment
      */
     // public function destroy(Apartment $apartment)
-    // {
-    //     $apartment->delete();
-    //     $apartment->services()->detach();
-    //     // Detach all related sponsorships
-    //     $apartment->sponsorships()->detach();
-    //     // Delete the apartment
-    //     $apartment->delete();
-    //     return redirect()->route('host.apartments.index'); //->with('message', "$apartment->title è stato cancellato con sucesso!")
-    // }
+
     public function destroy(Apartment $apartment)
     {
 
