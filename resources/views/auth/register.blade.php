@@ -13,42 +13,21 @@
                             <!--NAME AND SURNAME-->
                             <div class="mb-4 d-flex align-items-center justify-content-center gap-4">
 
-<<<<<<< HEAD
                                  <div class="">
                                     <input id="name" type="text" class="form-control rounded-5" name="name"
                                         value="{{ old('name') }}" placeholder="NAME" autocomplete="name" autofocus>
-=======
-                            <div class="mb-4 row">
-                                <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name"
-                                        value="{{ old('name') }}" autocomplete="name" autofocus>
->>>>>>> c4a48e68954da644f8550631d409e46d06eca784
                                 </div>
 
-<<<<<<< HEAD
+
                                 <div class="">
                                     <input id="surname" type="text" class="form-control rounded-5" name="surname"
                                         value="{{ old('surname') }}" placeholder="SURNAME" autocomplete="surname" autofocus>
-=======
-                                <div class="col-md-6">
-                                    <input id="surname" type="text" class="form-control" name="surname"
-                                        value="{{ old('surname') }}" autocomplete="surname" autofocus>
->>>>>>> c4a48e68954da644f8550631d409e46d06eca784
-                                </div>
 
-<<<<<<< HEAD
-=======
-                                <div class="col-md-6">
-                                    <input id="date_of_birth" type="date" class="form-control" name="date_of_birth"
-                                        value="{{ old('date_of_birth') }}" autocomplete="date_of_birth" autofocus>
                                 </div>
->>>>>>> c4a48e68954da644f8550631d409e46d06eca784
                             </div>
 
-                            <div class="mb-4">
+                            <div class="mb-4 d-flex align-items-center justify-content-center gap-4">
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -67,7 +46,7 @@
                             <!--PASSWORD-->
                             <div class="mb-4 d-flex align-items-center justify-content-center gap-4">
 
-                                <div class="col-md-6">
+                                <div class="">
                                     <input id="password" type="password"
                                         class="form-control rounded-5 @error('password') is-invalid @enderror" name="password"
                                         placeholder="PASSWORD" required autocomplete="new-password">
@@ -79,22 +58,23 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="">
                                     <input id="password-confirm" type="password" class="form-control rounded-5"
                                         name="password_confirmation" placeholder="CONFIRM PASSWORD" required autocomplete="new-password">
                                 </div>
                             </div>
 
                             <!--DATE_OF_BIRTH-->
-                            <div class="">
+                            <div class="mb-4 d-flex align-items-center justify-content-center gap-4">
                                 <div class="col-md-6">
                                     <input id="date_of_birth" type="date" class="form-control rounded-5" name="date_of_birth"
                                         value="{{ old('date_of_birth') }}" placeholder="DATE_OF_BIRTH" autocomplete="date_of_birth" autofocus>
+                                        <p class=" smal text-secondary">date of birth</p>
                                 </div>
-                                <p class=" smal text-secondary">date of birth</p>
+
                             </div>
 
-                            <div class="mb-4 row mb-0">
+                            <div class="mb-4 d-flex align-items-center justify-content-center gap-4">
 
                                 <div class=" text-decoration-underline">
                                     <a class="nav-link" href="{{ route('login') }}">Sei già registrato</a>
