@@ -19,79 +19,79 @@ class ServiceSeeder extends Seeder
         $services = [
             [
                 'name' => 'Wi-Fi gratuito',
-                'icon' => '<i class="fa-solid fa-wifi"></i>',
+                'icon' => 'wifi',
             ],
             [
                 'name' => 'Parcheggio privato',
-                'icon' => '<i class="fa-solid fa-parking"></i>',
+                'icon' => 'parking',
             ],
             [
                 'name' => 'Piscina',
-                'icon' => '<i class="fa-solid fa-swimmer"></i>',
+                'icon' => 'swimmer',
             ],
             [
                 'name' => 'Aria condizionata',
-                'icon' => '<i class="fa-light fa-air-conditioner"></i>',
+                'icon' => 'air-conditioner',
             ],
             [
                 'name' => 'Colazione inclusa',
-                'icon' => '<i class="fa-solid fa-coffee"></i>',
+                'icon' => 'coffee',
             ],
             [
                 'name' => 'Servizio di pulizia',
-                'icon' => '<i class="fa-solid fa-broom"></i>',
+                'icon' => 'broom',
             ],
             [
                 'name' => 'Palestra',
-                'icon' => '<i class="fa-solid fa-dumbbell"></i>',
+                'icon' => 'dumbbell',
             ],
             [
                 'name' => 'Vista Mare',
-                'icon' => '<i class="fa-solid fa-water"></i>',
+                'icon' => 'water',
             ],
             [
                 'name' => 'Giardino',
-                'icon' => '<i class="fa-solid fa-flower-tulip"></i>',
+                'icon' => 'flower-tulip',
             ],
             [
                 'name' => 'Barbecue',
-                'icon' => '<i class="fa-solid fa-grill-hot"></i>',
+                'icon' => 'grill-hot',
             ],
             [
                 'name' => 'Riscaldamento',
-                'icon' => '<i class="fa-solid fa-temperature-high"></i>',
+                'icon' => 'temperature-high',
             ],
             [
                 'name' => 'Patio o balcone',
-                'icon' => '<i class="fa-solid fa-window-frame-open"></i>',
+                'icon' => 'window-frame-open',
             ],
             [
                 'name' => 'Biancheria da letto',
-                'icon' => '<i class="fa-solid fa-blanket"></i>',
+                'icon' => 'blanket',
             ],
             [
                 'name' => 'Doccia',
-                'icon' => '<i class="fa-solid fa-shower"></i>',
+                'icon' => 'shower',
             ],
             [
                 'name' => 'Vasca',
-                'icon' => '<i class="fa-solid fa-bath"></i>',
+                'icon' => 'bath',
             ],
             [
                 'name' => 'Lavatrice',
-                'icon' => '<i class="fa-solid fa-washing-machine"></i>',
+                'icon' => 'washing-machine',
             ],
             [
                 'name' => 'Asciugatrice',
-                'icon' => '<i class="fa-solid fa-dryer-heat"></i>',
+                'icon' => 'dryer-heat',
             ],
             [
                 'name' => 'TV',
-                'icon' => '<i class="fa-solid fa-tv"></i>',
+                'icon' => 'tv',
             ],
             [
                 'name' => 'Cucina',
-                'icon' => '<i class="fa-solid fa-kitchen-set"></i>',
+                'icon' => 'kitchen-set',
             ],
 
 
