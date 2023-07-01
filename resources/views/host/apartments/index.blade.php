@@ -41,30 +41,18 @@
                                 </p>
                                 <p class="card-text"><span class="fw-bold text-capitalize">address:</span>
                                     {{ $apartment->address }}</p>
-
-
-                                {{-- <p>{{ $apartment->type ? $apartment->type->img : 'No type' }}</p> --}}
-
-
-
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a class="m-1" href="{{ route('host.apartments.show', $apartment->slug) }}"><button
-                                            class="btn btn-warning"> Show</button></a>
-
-                                    {{-- <form action="{{ route('host.apartments.destroy', $apartment->slug) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger m-1" type="submit">Delete</button>
-                                    </form> --}}
+                                    <a class="m-1" href="{{ route('host.apartments.show', $apartment->slug) }}">
+                                        <button class="btn btn-warning"> Show</button>
+                                    </a>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 @endforeach
-
             </div>
         </div>
     </div>
-
-    @include('../../partials/modal')
+    {{ $apartments->links('vendor.pagination.bootstrap-5') }}
 @endsection
