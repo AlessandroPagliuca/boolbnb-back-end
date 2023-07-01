@@ -34,7 +34,7 @@ class StoreApartmentRequest extends FormRequest
             'address' => 'required|min:3|max:255',
             'latitude' => 'required|min:-90|max:90',
             'longitude' => 'required|min:-180|max:180',
-            'visible' => 'nullable',
+            'visible' => 'nullable|boolean',
             'price' => 'required|numeric|min:1|max:99999|regex:/^\d+(\.\d{2})?$/',
             'user_id' => 'nullable|exists:users,id',
         ];

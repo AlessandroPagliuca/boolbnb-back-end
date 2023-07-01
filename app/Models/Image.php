@@ -14,6 +14,8 @@ class Image extends Model
     // Define the inverse relationship with the apartment
     public function apartments()
     {
-        return $this->hasMany(Apartment::class);
+        return $this->belongsTo(Apartment::class);
+        return $this->belongsTo(Apartment::class)->onDelete('cascade');
+
     }
 }

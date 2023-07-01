@@ -19,6 +19,20 @@
 
             @enderror
         </div>
+
+        <div class="mb-3">
+            <label for="main_img">Immagine</label>
+            <input type="text"  class="form-control @error('main_img') is-invalid
+            {{-- cambiare text in file  --}}
+             @enderror" name="main_img" id="main_img" >
+
+            @error('main_img')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+
+            @enderror
+        </div>
         <div class="mb-3">
             <label for="description">Descrizione</label>
             <input type="text" class="form-control @error('description') is-invalid

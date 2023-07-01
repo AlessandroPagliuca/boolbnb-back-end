@@ -56,8 +56,11 @@ class ApartmentController extends Controller
     public function store(StoreApartmentRequest $request)
     {
         $form_data = $request->validated();
+        $form_data['visible'] = $request->input('visible', true);
         $slug = Str::slug($request->title, '-');
         $form_data['slug'] = $slug;
+        $userId = Auth::id();
+        $form_data['user_id'] = $userId;
 
         $newApartment = Apartment::create($form_data);
 
@@ -69,7 +72,7 @@ class ApartmentController extends Controller
         }
 
         return redirect()->route('host.apartments.show', $newApartment->slug);
-            // ->with('message', "L'appartamento {$newApartment->name} è stato aggiunto con successo! :)");
+        // ->with('message', "L'appartamento {$newApartment->name} è stato aggiunto con successo! :)");
     }
 
     /**
@@ -129,9 +132,21 @@ class ApartmentController extends Controller
      *
      * @param  \App\Models\Apartment  $apartment
      */
+    // public function destroy(Apartment $apartment)
+    // {
+    //     $apartment->delete();
+    //     $apartment->services()->detach();
+    //     // Detach all related sponsorships
+    //     $apartment->sponsorships()->detach();
+    //     // Delete the apartment
+    //     $apartment->delete();
+    //     return redirect()->route('host.apartments.index'); //->with('message', "$apartment->title è stato cancellato con sucesso!")
+    // }
     public function destroy(Apartment $apartment)
     {
+
         $apartment->delete();
-        return redirect()->route('host.apartments.index')->with('message', "$apartment->title è stato cancellato con sucesso!");
+
+        return redirect()->route('host.apartments.index'); //->with('message', "$apartment->title è stato cancellato con sucesso!");
     }
 }

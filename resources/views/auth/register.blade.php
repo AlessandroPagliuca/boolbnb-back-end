@@ -17,14 +17,8 @@
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
-                                        class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        class="form-control"  name="name"
+                                        value="{{ old('name') }}" autocomplete="name" autofocus>
                                 </div>
                             </div>
                             <!--SURNAME-->
@@ -34,14 +28,8 @@
 
                                 <div class="col-md-6">
                                     <input id="surname" type="text"
-                                        class="form-control @error('surname') is-invalid @enderror" name="surname"
-                                        value="{{ old('surname') }}" required autocomplete="surname" autofocus>
-
-                                    @error('surname')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        class="form-control" name="surname"
+                                        value="{{ old('surname') }}" autocomplete="surname" autofocus>
                                 </div>
                             </div>
                             <!--date_of_birth-->
@@ -51,15 +39,9 @@
 
                                 <div class="col-md-6">
                                     <input id="date_of_birth" type="date"
-                                        class="form-control @error('date_of_birth') is-invalid @enderror"
-                                        name="date_of_birth" value="{{ old('date_of_birth') }}" required
+                                        class="form-control"
+                                        name="date_of_birth" value="{{ old('date_of_birth') }}"
                                         autocomplete="date_of_birth" autofocus>
-
-                                    @error('date_of_birth')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
 

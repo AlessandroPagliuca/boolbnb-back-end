@@ -51,7 +51,7 @@
                                     <a class="m-1" href="{{ route('host.apartments.show', $apartment->slug) }}"><button
                                             class="btn btn-warning"> Show</button></a>
 
-                                    <form action="{{ route('host.apartments.destroy', $apartment->id) }}" method="POST">
+                                    <form action="{{ route('host.apartments.destroy', $apartment->slug) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger m-1" type="submit">Delete</button>
@@ -65,4 +65,8 @@
             </div>
         </div>
     </div>
+
+    @include('../../partials/modal')
 @endsection
+
+
