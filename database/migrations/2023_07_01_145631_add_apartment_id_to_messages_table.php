@@ -12,11 +12,9 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('views', function (Blueprint $table) {
-            $table->id();
-            $table->date('view_date')->nullable();
-            $table->string('address_ip', 15)->nullable();
-            $table->timestamps();
+        Schema::table('messages', function (Blueprint $table) {
+            $table->unsignedBigInteger('apartment_id')->nullable();
+            $table->foreign('apartment_id')->references('id')->on('apartments');
         });
     }
 
@@ -27,6 +25,9 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('views');
+        Schema::table('messages', function (Blueprint $table) {
+            $table->dropForeign('messages_apartment_id_foreign');
+            $table->dropColumn('apartment_id');
+        });
     }
 };

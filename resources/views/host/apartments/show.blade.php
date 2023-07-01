@@ -83,9 +83,15 @@
                     <a class="m-1 btn btn-warning" href="{{ route('host.apartments.index') }}">
                         Go back
                     </a>
+                    <form action="{{ route('host.apartments.destroy', $apartment->slug) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger m-1" type="submit">Delete</button>
+                    </form>
                 </div>
             </div>
 
         </div>
     </div>
+    @include('../../partials/modal')
 @endsection

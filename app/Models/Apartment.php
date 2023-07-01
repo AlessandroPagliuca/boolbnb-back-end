@@ -23,7 +23,6 @@ class Apartment extends Model
     public function image()
     {
         return $this->hasMany(Image::class);
-        return $this->hasMany(Apartment::class)->onDelete('cascade');
     }
 
     public function services()

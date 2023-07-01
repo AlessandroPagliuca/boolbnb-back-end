@@ -16,8 +16,7 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text"
-                                        class="form-control"  name="name"
+                                    <input id="name" type="text" class="form-control" name="name"
                                         value="{{ old('name') }}" autocomplete="name" autofocus>
                                 </div>
                             </div>
@@ -27,8 +26,7 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="surname" type="text"
-                                        class="form-control" name="surname"
+                                    <input id="surname" type="text" class="form-control" name="surname"
                                         value="{{ old('surname') }}" autocomplete="surname" autofocus>
                                 </div>
                             </div>
@@ -38,10 +36,8 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Date of birth') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="date_of_birth" type="date"
-                                        class="form-control"
-                                        name="date_of_birth" value="{{ old('date_of_birth') }}"
-                                        autocomplete="date_of_birth" autofocus>
+                                    <input id="date_of_birth" type="date" class="form-control" name="date_of_birth"
+                                        value="{{ old('date_of_birth') }}" autocomplete="date_of_birth" autofocus>
                                 </div>
                             </div>
 
