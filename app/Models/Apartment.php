@@ -20,12 +20,6 @@ class Apartment extends Model
         return $this->hasMany(Message::class);
     }
 
-    public function image()
-    {
-        return $this->hasMany(Image::class);
-        return $this->hasMany(Apartment::class)->onDelete('cascade');
-    }
-
     public function services()
     {
         return $this->belongsToMany(Service::class);

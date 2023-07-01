@@ -16,7 +16,6 @@ return new class extends Migration {
             $table->id();
             $table->string('email', 255)->nullable();
             $table->text('message')->nullable();
-            $table->foreignId('apartment_id')->constrained()->nullable();
             $table->timestamps();
         });
     }

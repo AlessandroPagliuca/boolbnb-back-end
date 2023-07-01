@@ -12,11 +12,9 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
-            $table->id();
-            $table->string('img');
-            $table->foreignId('apartment_id')->constrained();
-            $table->timestamps();
+        Schema::table('views', function (Blueprint $table) {
+            $table->unsignedBigInteger('apartment_id')->nullable();
+            $table->foreign('apartment_id')->references('id')->on('apartments');
         });
     }
 
@@ -27,6 +25,9 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::table('views', function (Blueprint $table) {
+            $table->dropForeign('views_apartment_id_foreign');
+            $table->dropColumn('apartment_id');
+        });
     }
 };

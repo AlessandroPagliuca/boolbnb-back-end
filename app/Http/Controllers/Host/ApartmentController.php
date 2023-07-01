@@ -14,7 +14,6 @@ use App\Models\Message;
 use App\Models\Sponsorship;
 use App\Models\User;
 use App\Models\View;
-use App\Models\Image;
 
 
 
@@ -39,13 +38,12 @@ class ApartmentController extends Controller
     {
 
 
-        $images = Image::all();
         $services = Service::all();
         $sponsorships = Sponsorship::all();
         $views = View::all();
 
 
-        return view('host.apartments.create', compact('images', 'services', 'sponsorships', 'views'));
+        return view('host.apartments.create', compact('services', 'sponsorships', 'views'));
     }
 
     /**
@@ -92,11 +90,10 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        $images = Image::all();
         $services = Service::all();
         $sponsorships = Sponsorship::all();
         $views = View::all();
-        return view('host.apartments.edit', compact('apartment', 'images', 'services', 'sponsorships', 'views'));
+        return view('host.apartments.edit', compact('apartment', 'services', 'sponsorships', 'views'));
     }
 
     /**

@@ -14,10 +14,15 @@ return new class extends Migration {
     {
         Schema::create('apartment_service', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('apartment_id')->constrained();
-            $table->foreignId('service_id')->constrained();
+            $table->unsignedBigInteger('apartment_id');
+            $table->foreign('apartment_id')->references('id')->on('apartments')->cascadeOnDelete();
+
+            $table->unsignedBigInteger('service_id');
+            $table->foreign('service_id')->references('id')->on('services')->cascadeOnDelete();
             $table->timestamps();
+
         });
+
     }
 
     /**

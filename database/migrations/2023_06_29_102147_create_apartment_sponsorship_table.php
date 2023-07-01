@@ -14,9 +14,13 @@ return new class extends Migration {
     {
         Schema::create('apartment_sponsorship', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('apartment_id')->constrained();
-            $table->foreignId('sponsorship_id')->constrained();
+            $table->unsignedBigInteger('apartment_id');
+            $table->foreign('apartment_id')->references('id')->on('apartments')->cascadeOnDelete();
+
+            $table->unsignedBigInteger('sponsorship_id');
+            $table->foreign('sponsorship_id')->references('id')->on('sponsorships')->cascadeOnDelete();
             $table->timestamps();
+
         });
     }
 

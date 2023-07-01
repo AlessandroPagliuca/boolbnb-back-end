@@ -27,7 +27,6 @@ return new class extends Migration {
             $table->decimal('longitude', 9, 6);
             $table->boolean('visible');
             $table->decimal('price', 7, 2);
-            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
