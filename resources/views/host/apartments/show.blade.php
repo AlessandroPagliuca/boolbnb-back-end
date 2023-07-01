@@ -54,27 +54,32 @@
                     <p class="badge badge-pill bg-dark p-2">price per night: {{ $apartment->price }}</p>
 
                 </div>
-                {{-- <div class="col-12">
-                    <p class="badge badge-pill bg-dark text-uppercase p-2">Main Weapon:
-                        {{ $apartment->main_weapon }}</p>
-
+                <div>
+                    @if ($apartment->services && count($apartment->services) > 0)
+                        <div>
+                            @foreach ($apartment->services as $service)
+                                <div>
+                                    <span>{{$service->name}}</span>
+                                    <i class="fa-solid fa-{{$service->icon}}"></i>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
-                <div class="col-12">
-                    <p class="badge badge-pill bg-dark text-uppercase p-2">Type:
-                        {{ $apartment->type ? $apartment->type->name : 'No tech specified' }}</p>
-
+                <div>
+                    @if ($apartment->sponsorships && count($apartment->sponsorships) > 0)
+                        <div>
+                            @foreach ($apartment->sponsorships as $sponsorship)
+                                <div>
+                                    <span>{{$sponsorship->name}}</span>
+                                    <span>{{$sponsorship->duration}}</span>
+                                    <span>{{$sponsorship->description}}</span>
+                                    <span>{{$sponsorship->price}}</span>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
-                <div class="col-12">
-
-                @if ($apartment->weapons && count($apartment->weapons) > 0)
-                    <div>
-                        @foreach ($apartment->weapons as $weapon)
-                            <p class="badge rounded-pill bg-primary text-white">{{ $weapon->name }}</p>
-                        @endforeach
-                    </div>
-                @endif
-
-                </div> --}}
 
                 <div class="col-12">
                     <a class="m-1 btn btn-success" href="{{ route('host.apartments.edit', $apartment->slug) }}">
@@ -86,7 +91,7 @@
                     <form action="{{ route('host.apartments.destroy', $apartment->slug) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger m-1" type="submit">Delete</button>
+                        <button class="delete-btn btn btn-danger m-1" type="submit">Delete</button>
                     </form>
                 </div>
             </div>
@@ -95,3 +100,4 @@
     </div>
     @include('../../partials/modal')
 @endsection
+

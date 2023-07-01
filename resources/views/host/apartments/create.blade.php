@@ -10,7 +10,7 @@
             <label for="title">Title</label>
             <input type="text" class="form-control @error('title') is-invalid
 
-            @enderror" name="title" id="title" >
+            @enderror" name="title" id="title" value="{{old('title')}}">
 
             @error('title')
             <div class="invalid-feedback">
@@ -24,7 +24,7 @@
             <label for="main_img">Image</label>
             <input type="text"  class="form-control @error('main_img') is-invalid
             {{-- cambiare text in file  --}}
-             @enderror" name="main_img" id="main_img" >
+             @enderror" name="main_img" id="main_img" value="{{old('main_img')}}">
 
             @error('main_img')
             <div class="invalid-feedback">
@@ -37,7 +37,7 @@
             <label for="description">Description</label>
             <input type="text" class="form-control @error('description') is-invalid
 
-            @enderror" name="description" id="description" >
+            @enderror" name="description" id="description" value="{{old('description')}}">
 
             @error('description')
             <div class="invalid-feedback">
@@ -50,7 +50,7 @@
             <label for="rooms">Rooms</label>
             <input type="number" class="form-control @error('rooms') is-invalid
 
-            @enderror" name="rooms" id="rooms" >
+            @enderror" name="rooms" id="rooms" value="{{old('rooms')}}">
 
             @error('rooms')
             <div class="invalid-feedback">
@@ -63,7 +63,7 @@
             <label for="beds">Beds</label>
             <input type="number" class="form-control @error('beds') is-invalid
 
-            @enderror" name="beds" id="beds" >
+            @enderror" name="beds" id="beds" value="{{old('beds')}}">
 
             @error('beds')
             <div class="invalid-feedback">
@@ -76,7 +76,7 @@
             <label for="bathrooms">Bathrooms</label>
             <input type="number" class="form-control @error('bathrooms') is-invalid
 
-            @enderror" name="bathrooms" id="bathrooms" >
+            @enderror" name="bathrooms" id="bathrooms" value="{{old('bathrooms')}}">
 
             @error('bathrooms')
             <div class="invalid-feedback">
@@ -89,7 +89,7 @@
             <label for="square_meters">Square meters</label>
             <input type="number" class="form-control @error('square_meters') is-invalid
 
-            @enderror" name="square_meters" id="square_meters" >
+            @enderror" name="square_meters" id="square_meters" value="{{old('square_meters')}}">
 
             @error('square_meters')
             <div class="invalid-feedback">
@@ -102,7 +102,7 @@
             <label for="address">Address</label>
             <input type="text" class="form-control @error('address') is-invalid
 
-            @enderror" name="address" id="address" >
+            @enderror" name="address" id="address" value="{{old('address')}}">
 
             @error('address')
             <div class="invalid-feedback">
@@ -115,7 +115,7 @@
             <label for="latitude">Latitude</label>
             <input type="text" class="form-control @error('latitude') is-invalid
 
-            @enderror" name="latitude" id="latitude" >
+            @enderror" name="latitude" id="latitude" value="{{old('latuitude')}}">
 
             @error('latitude')
             <div class="invalid-feedback">
@@ -128,7 +128,7 @@
             <label for="longitude">Longitude</label>
             <input type="text" class="form-control @error('longitude') is-invalid
 
-            @enderror" name="longitude" id="longitude" >
+            @enderror" name="longitude" id="longitude" value="{{old('longitude')}}">
 
             @error('longitude')
             <div class="invalid-feedback">
@@ -154,7 +154,7 @@
         <div class="mb-3">
             <label for="price">Price per night</label>
             <input type="number" class="form-control @error('price') is-invalid
-            @enderror" name="price" id="price" >
+            @enderror" name="price" id="price" value="{{old('price')}}">
 
             @error('price')
             <div class="invalid-feedback">
