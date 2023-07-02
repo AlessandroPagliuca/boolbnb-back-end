@@ -48,7 +48,7 @@
 
                                 <div class="">
                                     <input id="password" type="password"
-                                        class="form-control rounded-5 @error('password') is-invalid @enderror" name="password"
+                                        class="form-control rounded-5 border-pink @error('password') is-invalid @enderror" name="password"
                                         placeholder="PASSWORD" required autocomplete="new-password">
 
                                     @error('password')
@@ -68,8 +68,8 @@
                             <div class="mb-4 d-flex align-items-center justify-content-center gap-4">
                                 <div class="col-md-6">
                                     <input id="date_of_birth" type="date" class="form-control rounded-5" name="date_of_birth"
-                                        value="{{ old('date_of_birth') }}" placeholder="DATE_OF_BIRTH" autocomplete="date_of_birth" autofocus>
-                                        <p class=" smal text-secondary">date of birth</p>
+                                        value="{{ old('date_of_birth') }}" placeholder="date of birth" autocomplete="date_of_birth" autofocus>
+                                    <p class="smal text-secondary">date of birth</p>
                                 </div>
 
                             </div>

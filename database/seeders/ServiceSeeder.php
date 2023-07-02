@@ -31,7 +31,7 @@ class ServiceSeeder extends Seeder
             ],
             [
                 'name' => 'Aria condizionata',
-                'icon' => 'air-conditioner',
+                'icon' => 'wind',
             ],
             [
                 'name' => 'Colazione inclusa',
@@ -51,11 +51,11 @@ class ServiceSeeder extends Seeder
             ],
             [
                 'name' => 'Giardino',
-                'icon' => 'flower-tulip',
+                'icon' => 'leaf',
             ],
             [
                 'name' => 'Barbecue',
-                'icon' => 'grill-hot',
+                'icon' => 'stroopwafel ',// table-cells
             ],
             [
                 'name' => 'Riscaldamento',
@@ -63,11 +63,11 @@ class ServiceSeeder extends Seeder
             ],
             [
                 'name' => 'Patio o balcone',
-                'icon' => 'window-frame-open',
+                'icon' => 'house-chimney-window',
             ],
             [
                 'name' => 'Biancheria da letto',
-                'icon' => 'blanket',
+                'icon' => 'rug',
             ],
             [
                 'name' => 'Doccia',
@@ -79,11 +79,11 @@ class ServiceSeeder extends Seeder
             ],
             [
                 'name' => 'Lavatrice',
-                'icon' => 'washing-machine',
+                'icon' => 'instagram fa-rotate-180',
             ],
             [
                 'name' => 'Asciugatrice',
-                'icon' => 'dryer-heat',
+                'icon' => 'instagram fa-rotate-180',
             ],
             [
                 'name' => 'TV',
