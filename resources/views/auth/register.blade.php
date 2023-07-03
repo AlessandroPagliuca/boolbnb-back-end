@@ -60,7 +60,8 @@
 
                                 <div class="col-6 border-pink">
                                     <input id="password-confirm" type="password" class="form-control p-3 mb-4 rounded-5"
-                                        name="password_confirmation" placeholder="Confirm password *" required
+                                        name="password_confirmation" placeholder="Confirm password*" required
+                                        pattern="{{ old('password') }}" title="Le password non corrispondono"
                                         autocomplete="new-password">
                                 </div>
                             </div>
@@ -74,7 +75,7 @@
                             </div>
                             <!--Submit for register-->
                             <div class="mb-4 d-flex align-items-center justify-content-center gap-4">
-                                <button type="submit" class="btn btn-primary px-5 py-3 text-white rounded-5">
+                                <button type="submit" class="btn btn-primary px-5 py-3 text-white rounded-5 fw-semibold">
                                     {{ __('Register') }}
                                 </button>
                             </div>
