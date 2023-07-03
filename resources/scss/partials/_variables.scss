@@ -1,9 +1,31 @@
-
 $primary: #ff385c;
 $white: #FFFFFF;
 $black: #222222;
 
 
-.border-pink{
-    border-color: $primary;
+.border-pink {
+    border-color: $primary !important;
+
+    input {
+        border-color: $primary !important;
+
+    }
+}
+
+.d-inline {
+    display: inline-block;
+    color: $primary !important;
+}
+
+.primary-color {
+    color: $primary !important;
+
+}
+
+.box-card {
+    min-width: 345px !important;
+    min-height: 345px !important;
+
+    border: 0;
+    box-shadow: 1px 1px 12px 6px rgba(103, 103, 104, 0.2);
 }
