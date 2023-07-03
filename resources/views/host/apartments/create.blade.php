@@ -170,7 +170,11 @@
                     <input type="checkbox" name="services[]" value="{{ $service->id }}" class="form-check-input"
                         {{ in_array($service->id, old('services', [])) ? 'checked' : '' }}>
                     <label for="services[]" class="form-check-label">{{ $service->name }}</label>
-                    <i class="fa-solid fa-{{$service->icon}}"></i>
+                    @if ($service->icon == 'instagram fa-rotate-180')
+                        <i class="fa-brands fa-{{$service->icon}} px-2"></i>
+                    @else
+                    <i class="fa-solid fa-{{$service->icon}} px-2"></i>
+                    @endif
                 </div>
             @endforeach
             @error('services')

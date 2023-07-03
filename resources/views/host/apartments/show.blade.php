@@ -59,8 +59,12 @@
                         <div>
                             @foreach ($apartment->services as $service)
                                 <div>
-                                    <span>{{$service->name}}</span>
-                                    <i class="fa-solid fa-{{$service->icon}}"></i>
+                                    <span>{{ $service->name }}</span>
+                                    @if ($service->icon == 'instagram fa-rotate-180')
+                                        <i class="fa-brands fa-{{ $service->icon }} px-2"></i>
+                                    @else
+                                        <i class="fa-solid fa-{{ $service->icon }} px-2"></i>
+                                    @endif
                                 </div>
                             @endforeach
                         </div>
@@ -71,10 +75,10 @@
                         <div>
                             @foreach ($apartment->sponsorships as $sponsorship)
                                 <div>
-                                    <span>{{$sponsorship->name}}</span>
-                                    <span>{{$sponsorship->duration}}</span>
-                                    <span>{{$sponsorship->description}}</span>
-                                    <span>{{$sponsorship->price}}</span>
+                                    <span>{{ $sponsorship->name }}</span>
+                                    <span>{{ $sponsorship->duration }}</span>
+                                    <span>{{ $sponsorship->description }}</span>
+                                    <span>{{ $sponsorship->price }}</span>
                                 </div>
                             @endforeach
                         </div>
@@ -100,4 +104,3 @@
     </div>
     @include('../../partials/modal')
 @endsection
-
