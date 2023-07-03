@@ -27,7 +27,8 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::paginate(6);
+        $user = Auth::user();
+        $apartments = Apartment::where('user_id', $user->id)->paginate(6);
         return view('host.apartments.index', compact('apartments'));
     }
 
@@ -55,9 +56,16 @@ class ApartmentController extends Controller
         $form_data = $request->validated();
         $form_data['visible'] = $request->input('visible', true);
         $slug = Str::slug($request->title, '-');
-        $form_data['slug'] = $slug;
-        $userId = Auth::id();
-        $form_data['user_id'] = $userId;
+        $uniqueSlug = $slug;
+        $counter = 1;
+
+        while (Apartment::where('slug', $uniqueSlug)->exists()) {
+            $uniqueSlug = $slug . '-' . $counter;
+            $counter++;
+        }
+
+        $form_data['slug'] = $uniqueSlug;
+        $form_data['user_id'] = Auth::id();
 
         $newApartment = Apartment::create($form_data);
 
@@ -79,6 +87,9 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
+        if ($apartment->user_id !== Auth::id()) {
+            abort(403);
+        }
         return view('host.apartments.show', compact('apartment'));
     }
 
@@ -89,6 +100,10 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
+
+        if ($apartment->user_id !== Auth::id()) {
+            abort(403);
+        }
         $services = Service::all();
         $sponsorships = Sponsorship::all();
 
@@ -105,7 +120,16 @@ class ApartmentController extends Controller
     {
         $data = $request->validated();
         $slug = Str::slug($request->title, '-');
-        $data['slug'] = $slug;
+        $slug = Str::slug($request->title, '-');
+        $uniqueSlug = $slug;
+        $counter = 1;
+
+        while (Apartment::where('slug', $uniqueSlug)->exists()) {
+            $uniqueSlug = $slug . '-' . $counter;
+            $counter++;
+        }
+
+        $data['slug'] = $uniqueSlug;
         $apartment->update($data);
 
         if ($request->has('services')) {
