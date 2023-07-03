@@ -1,58 +1,50 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-team">
-        <h1 class=" text-center text-white text-uppercase p-4">apartments Cards</h1>
-        <div class="container">
-            <div class="text-center m-5">
-                <a class="btn btn-success" href="{{ route('host.apartments.create') }}">Crea nuovo apartments</a>
-            </div>
-            <div class="row">
-                @foreach ($apartments as $apartment)
-                    <div class="col-4">
-                        <div class="card card-bg mb-3 shadow">
-                            <div class="row align-items-center">
-                                <div class="col-9">
-                                    <h4 class="fs-4 card-title fw-bold text-center text-capitalize py-2">
-                                        {{ $apartment->title }}</h4>
-                                </div>
-                                <div class="col-3">
-                                    <p class="card-text">price: {{ $apartment->price }}&euro;</p>
-                                </div>
+    <div class="list-group text-bg-dark">
 
-                            </div>
+        @foreach ($apartments as $apartment)
+            <a href="{{ route('host.apartments.show', $apartment->slug) }}" class="text-decoration-none text-dark w-100">
+                <li class="list-group-item list-group-item-action">
 
-                            <div>
-                                <img class="img-fluid" src="{{ $apartment->main_img }}" alt="caio">
-                            </div>
+                    <div class="d-flex align-items-center justify-content-between">
 
-                            <div class="card-body">
+                        <div class=" d-flex align-items-center gap-4">
 
-                                <p class="card-text"><span class="fw-bold text-capitalize">description:</span>
-                                    {{ $apartment->description }}</p>
-                                <p class="card-text"><span class="fw-bold text-capitalize">rooms:</span>
-                                    {{ $apartment->rooms }}</p>
-                                <p class="card-text"><span class="fw-bold text-capitalize">beds:</span>
-                                    {{ $apartment->beds }}</p>
-                                <p class="card-text"> <span class="fw-bold text-capitalize">bathrooms:</span>
-                                    {{ $apartment->bathrooms }} </p>
-                                <p class="card-text"><span class="fw-bold text-capitalize">square meters: </span>
-                                    {{ $apartment->square_meters }}
-                                </p>
-                                <p class="card-text"><span class="fw-bold text-capitalize">address:</span>
-                                    {{ $apartment->address }}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <a class="m-1" href="{{ route('host.apartments.show', $apartment->slug) }}">
-                                        <button class="btn btn-warning"> Show</button>
-                                    </a>
-                                </div>
+                            <p class="m-0 fw-bold">{{ $apartment->id }}</p>
+                            <img class="rounded-3" style="width:100px" src="{{ $apartment->main_img }}"
+                                alt="{{ $apartment->slug }}">
+                            <p class="m-0">{{ $apartment->title }}</p>
+                            <p class="m-0">{{ $apartment->created_at }}</p>
 
-                            </div>
                         </div>
+
+                        <div class=" d-flex align-items-center">
+                            <a class="m-1 btn btn-success" href="{{ route('host.apartments.edit', $apartment->slug) }}">
+                                <i class="fa-solid fa-pencil"></i>
+                            </a>
+                            <form action="{{ route('host.apartments.destroy', $apartment->slug) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="delete-btn btn btn-danger m-1" type="submit"><i
+                                        class="fa-solid fa-trash-can"></i></button>
+                            </form>
+                        </div>
+
                     </div>
-                @endforeach
-            </div>
-        </div>
+                </li>
+            </a>
+        @endforeach
     </div>
-    {{ $apartments->links('vendor.pagination.bootstrap-5') }}
+    <div class="container-fluid pt-4">
+        {{ $apartments->links('vendor.pagination.bootstrap-5') }}
+    </div>
+
+    <div class=" d-flex justify-content-center">
+        <a class="btn btn-success" href="{{ route('host.apartments.create') }}">
+            Add annoucment
+        </a>
+    </div>
+
+    @include('../../partials/modal')
 @endsection
