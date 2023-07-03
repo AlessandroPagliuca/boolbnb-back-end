@@ -56,6 +56,12 @@
                                     </label>
                                 </div>
                             </div>
+                            <!--Submit for register-->
+                            <div class="mb-4 d-flex align-items-center justify-content-center gap-4">
+                                <button type="submit" class="btn btn-primary px-5 py-3 text-white rounded-5 fw-semibold">
+                                    {{ __('Login') }}
+                                </button>
+                            </div>
                             <!--If don't have account, direction on register page-->
                             <div class="mb-4 d-flex align-items-center justify-content-center gap-4">
                                 <div class="col-12 text-center fw-semibold">
