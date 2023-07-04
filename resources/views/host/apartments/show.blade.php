@@ -10,6 +10,11 @@
     <div class="main-content">
         <div class="container">
             <div class="row">
+                <div class="col-12 my-3">
+                    <img style="width: 275px; height:275px; object-fit:cover;" class="rounded-5"
+                        src="{{ asset('storage/public/images/apartments/' . $apartment->main_img) }}" alt="Apartment Image">
+
+                </div>
                 <div class="col-12">
                     <h1 class="fw-bold fs-2 py-4">Name apartment: {{ $apartment->title }}</h1>
 
@@ -36,14 +41,6 @@
                 </div>
                 <div class="col-12 ">
                     <p class="badge badge-pill bg-dark p-2">Address: {{ $apartment->address }}</p>
-
-                </div>
-                <div class="col-12 ">
-                    <p class="badge badge-pill bg-dark p-2">Latitude: {{ $apartment->latitude }}</p>
-
-                </div>
-                <div class="col-12 ">
-                    <p class="badge badge-pill bg-dark p-2">Longitude: {{ $apartment->longitude }}</p>
 
                 </div>
                 <div class="col-12 ">
