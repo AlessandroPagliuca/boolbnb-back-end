@@ -14,7 +14,7 @@
                             <p class="m-0 fw-bold">{{ $apartment->id }}</p>
                             <img class="rounded-3" style="width:100px" src="{{ $apartment->main_img }}"
                                 alt="{{ $apartment->slug }}">
-                            <p class="m-0">{{ $apartment->title }}</p>
+                            <p class="m-0 d-none d-md-block">{{ $apartment->title }}</p>
                             <p class="m-0">{{ $apartment->created_at }}</p>
 
                         </div>
@@ -41,7 +41,7 @@
     </div>
 
     <div class=" d-flex justify-content-center">
-        <a class="btn btn-success" href="{{ route('host.apartments.create') }}">
+        <a class="btn btn-primary text-white fw-semibold" href="{{ route('host.apartments.create') }}">
             Add annoucment
         </a>
     </div>

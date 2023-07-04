@@ -7,3 +7,43 @@ $black: #222222;
 .border-pink{
     border-color: $primary;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.navbar{
+    background-color: $black !important;
+    .nav-item{
+        a.nav-link{
+            color: $white;
+            transition: all .5s;
+
+            &:hover{
+                border-bottom: 3px solid $primary;
+                color: $primary !important;
+            }
+        }
+    }
+}
+
+.anas{
+    color: $primary !important;
+}
