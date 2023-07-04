@@ -157,7 +157,9 @@ class ApartmentController extends Controller
     public function destroy(Apartment $apartment)
     {
 
-        $apartment->delete();
+        if ($apartment->user_id == Auth::id()) {
+            $apartment->delete();
+        }
 
         return redirect()->route('host.apartments.index'); //->with('message', "$apartment->title è stato cancellato con sucesso!");
     }
