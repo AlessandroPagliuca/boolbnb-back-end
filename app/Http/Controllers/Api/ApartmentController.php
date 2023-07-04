@@ -8,33 +8,33 @@ use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
 {
-    // public function index()
-    // {
-    //     $apartments = Apartment::with('type')->paginate(5);
-    //     return response()->json([
-    //         'status' => 'success',
-    //         'message' => 'ok',
-    //         'results' => $apartments
-    //     ], 200);
-    // }
+    public function index()
+    {
+        $apartments = Apartment::with('sponsorships')->paginate(5);
+        return response()->json([
+            'status' => 'success',
+            'message' => 'ok',
+            'results' => $apartments
+        ], 200);
+    }
 
-    // public function show($slug)
-    // {
-    //     $apartment = Apartment::with('type', 'tags')->where('slug', $slug)->first();
+    public function show($slug)
+    {
+        $apartment = Apartment::with('services', 'images')->where('slug', $slug)->first();
 
-    //     if ($apartment) {
-    //         return response()->json([
-    //             'status' => 'success',
-    //             'message' => 'ok',
-    //             'results' => $apartment
-    //         ], 200);
-    //     } else {
-    //         return response()->json([
-    //             'status' => 'error',
-    //             'message' => 'Apartment not found !'
-    //         ], 404);
-    //     }
+        if ($apartment) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'ok',
+                'results' => $apartment
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Apartment not found !'
+            ], 404);
+        }
 
 
-    // }
+    }
 }
