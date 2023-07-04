@@ -8,9 +8,18 @@ use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
 {
+    public function home()
+    {
+        $apartments = Apartment::with('sponsorships');
+        return response()->json([
+            'status' => 'success',
+            'message' => 'ok',
+            'results' => $apartments
+        ], 200);
+    }
     public function index()
     {
-        $apartments = Apartment::with('sponsorships')->paginate(5);
+        $apartments = Apartment::all();
         return response()->json([
             'status' => 'success',
             'message' => 'ok',
@@ -20,7 +29,7 @@ class ApartmentController extends Controller
 
     public function show($slug)
     {
-        $apartment = Apartment::with('services', 'images')->where('slug', $slug)->first();
+        $apartment = Apartment::with('services', 'image', 'message')->where('slug', $slug)->first();
 
         if ($apartment) {
             return response()->json([
