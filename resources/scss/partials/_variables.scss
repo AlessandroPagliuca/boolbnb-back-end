@@ -22,9 +22,51 @@ $black: #222222;
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.navbar{
+    background-color: $black !important;
+    .nav-item{
+        a.nav-link{
+            color: $white;
+            transition: all .5s;
+
+            &:hover{
+                border-bottom: 3px solid $primary;
+                color: $primary !important;
+            }
+        }
+    }
+}
+
+.anas{
+    color: $primary !important;
+}
+
 .box-card {
     width: 350px !important;
 
     border: 0;
     box-shadow: 1px 1px 12px 6px rgba(103, 103, 104, 0.2);
 }
+
