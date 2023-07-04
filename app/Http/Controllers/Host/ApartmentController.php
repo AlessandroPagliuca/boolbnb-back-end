@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use App\Http\Requests\StoreApartmentRequest;
 use App\Http\Requests\UpdateApartmentRequest;
-use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -15,7 +14,7 @@ use App\Models\Message;
 use App\Models\Sponsorship;
 use App\Models\User;
 use App\Models\View;
-
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -53,6 +52,7 @@ class ApartmentController extends Controller
      */
     public function store(StoreApartmentRequest $request)
     {
+     
         $form_data = $request->validated();
         $form_data['visible'] = $request->input('visible', true);
         $slug = Str::slug($request->title, '-');
@@ -66,6 +66,13 @@ class ApartmentController extends Controller
 
         $form_data['slug'] = $uniqueSlug;
         $form_data['user_id'] = Auth::id();
+        if($request->hasFile('main_img')){
+            $destination_path = 'public/images/apartments';
+            $image = $request->file('main_img');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('main_img')->storeAs($destination_path, $image_name);
+            $form_data['main_img'] = $image_name;
+        }
 
         $newApartment = Apartment::create($form_data);
 
@@ -76,6 +83,7 @@ class ApartmentController extends Controller
             $newApartment->sponsorships()->attach($request->sponsorships);
         }
 
+        
         return redirect()->route('host.apartments.show', $newApartment->slug);
         // ->with('message', "L'appartamento {$newApartment->name} è stato aggiunto con successo! :)");
     }
@@ -130,6 +138,15 @@ class ApartmentController extends Controller
         }
 
         $data['slug'] = $uniqueSlug;
+
+        if($request->hasFile('main_img')){
+            Storage::delete($apartment->main_img);
+            $destination_path = 'public/images/apartments';
+            $image = $request->file('main_img');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('main_img')->storeAs($destination_path, $image_name);
+            $data['main_img'] = $image_name;
+        }
         $apartment->update($data);
 
         if ($request->has('services')) {
@@ -157,7 +174,10 @@ class ApartmentController extends Controller
     public function destroy(Apartment $apartment)
     {
 
-        $apartment->delete();
+        if ($apartment->user_id == Auth::id()) {
+            $apartment->delete();
+
+        }
 
         return redirect()->route('host.apartments.index'); //->with('message', "$apartment->title è stato cancellato con sucesso!");
     }

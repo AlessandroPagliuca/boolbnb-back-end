@@ -23,8 +23,11 @@ return new class extends Migration {
             $table->tinyInteger('bathrooms');
             $table->smallInteger('square_meters');
             $table->string('address');
-            $table->decimal('latitude', 8, 6);
-            $table->decimal('longitude', 9, 6);
+            $table->string('city', 100);
+            $table->string('country', 100);
+            $table->string('zipcode', 15);
+            $table->decimal('latitude', 8, 6)->nullable();
+            $table->decimal('longitude', 9, 6)->nullable();
             $table->boolean('visible');
             $table->decimal('price', 7, 2);
             $table->timestamps();
