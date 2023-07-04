@@ -61,8 +61,8 @@
                                 <div class="col-6 border-pink">
                                     <input id="password-confirm" type="password" class="form-control p-3 mb-4 rounded-5"
                                         name="password_confirmation" placeholder="Confirm password*" required
-                                        pattern="{{ old('password') }}" title="Le password non corrispondono"
                                         autocomplete="new-password">
+
                                 </div>
                             </div>
                             <div class="row d-flex align-items-center justify-content-center gap-4">
@@ -75,7 +75,8 @@
                             </div>
                             <!--Submit for register-->
                             <div class="mb-4 d-flex align-items-center justify-content-center gap-4">
-                                <button type="submit" class="btn btn-primary px-5 py-3 text-white rounded-5 fw-semibold">
+                                <button type="submit" class="btn btn-primary px-5 py-3 text-white rounded-5 fw-semibold"
+                                    onclick="checkPasswordMatch()">
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -102,3 +103,19 @@
         </div>
     </div>
 @endsection
+
+<script>
+    function checkPasswordMatch() {
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('password-confirm');
+        const passwordMatchError = document.getElementById('password-match-error');
+
+        if (confirmPasswordInput.value !== passwordInput.value) {
+            confirmPasswordInput.setCustomValidity('Le password non corrispondono');
+            passwordMatchError.style.display = 'block';
+        } else {
+            confirmPasswordInput.setCustomValidity('');
+            passwordMatchError.style.display = 'none';
+        }
+    }
+</script>
