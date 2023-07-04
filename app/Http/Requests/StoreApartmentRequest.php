@@ -26,7 +26,7 @@ class StoreApartmentRequest extends FormRequest
         return [
             'title' => 'required|max:100|min:3',
             'description' => 'required|min:10',
-            'main_img' => 'required|min:3|max:255',
+            'main_img' => 'required|image|max:2048',
             'rooms' => 'required|min:1|max:6',
             'beds' => 'required|min:1|max:10',
             'bathrooms' => 'required|min:1|max:3',

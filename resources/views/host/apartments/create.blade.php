@@ -4,7 +4,7 @@
     <div class="container">
 
         <h1>Add your apartments</h1>
-        <form action="{{ route('host.apartments.store') }}" method="POST">
+        <form action="{{ route('host.apartments.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <!--Title-->
             <div class="mb-3">
@@ -22,18 +22,8 @@
             </div>
             <!-- MAIN Image-->
             <div class="mb-3">
-                <label for="main_img">Image</label>
-                <input type="text"
-                    class="form-control @error('main_img') is-invalid
-            {{-- cambiare text in file  --}}
-             @enderror"
-                    name="main_img" id="main_img" value="{{ old('main_img') }}">
-
-                @error('main_img')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
+                <label for="main_img" class="form-label">Insert main image</label>
+                <input class="form-control" type="file" id="main_img" name="main_img">
             </div>
             <!--Description-->
             <div class="mb-3">
@@ -173,6 +163,14 @@
                         {{ $message }}
                     </div>
                 @enderror
+            </div>
+            <div>
+                <label for="visible">Visibility:</label>
+                <input type="radio" id="visible" name="visible" value="1" checked>
+                <label for="visible">Visible</label>
+
+                <input type="radio" id="not-visible" name="visible" value="0">
+                <label for="not-visible">Not Visible</label>
             </div>
             <!--services-->
             <div class="form-group">

@@ -20,12 +20,8 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="main_img" class="fw-bold">Image</label>
-                <input type="text"{{-- cambiare text in file  --}} class="form-control @error('main_img') is-invalid @enderror"
-                    name="main_img" id="main_img" value="{{ old('main_img', $apartment->main_img) }}">
-                @error('main_img')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+                <label for="main_img" class="form-label">Insert main image</label>
+                <input class="form-control" type="file" id="main_img" name="main_img">
             </div>
             <div class="mb-3">
                 <label for="description" class="fw-bold">Description</label>
@@ -35,14 +31,14 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
-            {{-- <div class="mb-3">
+            <div class="mb-3">
             <label for="visible">Visibilità</label>
             <input type="text" class="form-control @error('visible') is-invalid @enderror" name="visible"
                 id="visible" value="{{ old('visible', $apartment->visible) }}">
             @error('visible')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
-        </div> --}}
+        </div> 
             <div class="mb-3">
                 <label for="rooms" class="fw-bold">Rooms</label>
                 <input type="text" class="form-control @error('rooms') is-invalid @enderror" name="rooms"
@@ -140,7 +136,15 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+            <div>
+                <label for="visible">Visibility:</label>
+                <input type="radio" id="visible" name="visible" value="1" checked>
+                <label for="visible">Visible</label>
 
+                <input type="radio" id="not-visible" name="visible" value="0">
+                <label for="not-visible">Not Visible</label>
+            </div>
+            
             <div class="form-group">
                 <p class="text-dark fw-bold pt-3">Select your sponsorship:</p>
                 @foreach ($sponsorships as $sponsorship)
