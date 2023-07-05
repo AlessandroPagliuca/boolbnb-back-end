@@ -1,6 +1,18 @@
-@extends('errors::minimal')
 
-<!-- about -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Error 404</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js" integrity="sha512-/6TZODGjYL7M8qb7P6SflJB/nTGE79ed1RfJk3dfm/Ib6JwCT4+tOfrrseEHhxkIhwG8jCl+io6eaiWLS/UX1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+
+
 <div class="about">
     <a class="bg_links social portfolio" href="https://www.rafaelalucas.com" target="_blank">
        <span class="icon"></span>
@@ -67,3 +79,6 @@
         var scene = document.getElementById('scene');
         var parallax = new Parallax(scene);
      </script>
+    @vite(['resources/js/404error.js'])
+    </body>
+</html>
