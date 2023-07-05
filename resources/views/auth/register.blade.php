@@ -111,7 +111,7 @@
         const passwordMatchError = document.getElementById('password-match-error');
 
         if (confirmPasswordInput.value !== passwordInput.value) {
-            confirmPasswordInput.setCustomValidity('Le password non corrispondono');
+            confirmPasswordInput.setCustomValidity('Passwords do not match');
             passwordMatchError.style.display = 'block';
         } else {
             confirmPasswordInput.setCustomValidity('');

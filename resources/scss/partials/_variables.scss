@@ -249,10 +249,9 @@ main {
                         background-color: #0077b5;
                     }
                 }
-            }
-        }
-    }
-}
+
+
+
 
 @import url("https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,600,700,800,900|Barlow:300,400,500,600,700,800,900&display=swap");
 
@@ -284,7 +283,8 @@ $circleShadow: inset 5px 20px 40px rgba(#ff5d7b, 0.25),
     @media screen and (max-width: 799px) {
         @content;
     }
-}
+
+
 
 @mixin height {
     @media screen and (max-height:660px) {
@@ -899,3 +899,7 @@ nav {
         min-height: 500px;
     }
 }
+
+    box-shadow: 1px 1px 12px 6px rgba(103, 103, 104, 0.2);
+}
+

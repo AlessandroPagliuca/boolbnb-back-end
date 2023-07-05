@@ -26,15 +26,16 @@
                 <a class="navbar-brand text-uppercase" href="{{ route('host.dashboard') }}">
                     <img src="{{ asset('/img/logo-boolbnb.png') }}" style="width: 50px; height: 50px; object-fit:cover;"
                     alt="logo"></a>
-                <button class="navbar-toggler ah-hamburger-border text-white" type="button" data-bs-toggle="collapse"
 
+                <button class="navbar-toggler ah-hamburger-border text-white" type="button" data-bs-toggle="collapse"
                     data-bs-target="#mynav" aria-controls="mynav" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa-solid fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="mynav">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
-                        <li class="nav-item " >
-                            <a class="nav-link text-uppercase {{ request()->routeIs('host.dashboard') ? 'active' : '' }}" href="{{ route('host.dashboard') }}">Dashboard</a>
+                        <li class="nav-item ">
+                            <a class="nav-link text-uppercase {{ request()->routeIs('host.dashboard') ? 'active' : '' }}"
+                                href="{{ route('host.dashboard') }}">Dashboard</a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link text-uppercase {{ request()->routeIs('host.apartments.*') ? 'active' : '' }}"
@@ -43,15 +44,15 @@
                         <li class="nav-item dropdown">
                             @auth
                                 @if (empty(Auth::user()->name))
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle fit-content"
-                                        href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false" v-pre>
-                                        Dajeee romaaaaa Dajee
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle fit-content" href="#"
+                                        role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                        v-pre>
+                                        User
                                     </a>
                                 @else
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle fit-content"
-                                        href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false" v-pre>
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle fit-content" href="#"
+                                        role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                        v-pre>
                                         {{ Auth::user()->name }}
                                     </a>
                                 @endif
@@ -82,5 +83,3 @@
 </body>
 
 </html>
-
-
