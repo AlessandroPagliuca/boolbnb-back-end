@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h2 class="my-4">Add your apartments</h2>
+    <div class="container py-3">
+        <a class="m-1" href="{{ route('host.apartments.index') }}"><button
+            class="btn btn-primary text-white rounded-circle fs-4">
+            <i class="fa-solid fa-arrow-left"></i></button></a>
+        <h2 class="py-4">Add your apartments</h2>
         <form class="fw-semibold" action="{{ route('host.apartments.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row align-items-center justify-content-center">

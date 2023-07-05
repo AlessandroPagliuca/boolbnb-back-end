@@ -14,7 +14,8 @@
             </p>
 
             <div class=" d-flex justify-content-center">
-                <a class="btn btn-outline-primary btn-hover border-3 fw-semibold" href="{{ route('host.apartments.create') }}">
+                <a class="btn btn-outline-primary btn-hover border-3 fw-semibold"
+                    href="{{ route('host.apartments.create') }}">
                     Add annoucment
                 </a>
             </div>
@@ -58,8 +59,9 @@
                                         <i class="fa-solid fa-chart-line"></i>
                                     </a>
 
+                                    <!--DA RIVEDERE-->
                                     <a class="m-1 btn btn-success"
-                                        href="{{ route('host.sponsorships.index'), $apartment->slug }}">
+                                        href="{{ route('host.sponsorships.show', $apartment->slug) }}">
                                         <i class="fa-solid fa-money-bills"></i>
                                     </a>
                                 </div>

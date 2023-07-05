@@ -67,7 +67,7 @@
 
              <div class="text">
                  <article>
-                     <p>Uh oh! Looks like you got lost. <br>Go back to the homepage if you dare!</p>
+                     <p>Hey, you are trying to access in appartament that not your!!</p>
                      <a href="{{ route('host.apartments.index') }}"><button>i dare!</button></a>
                  </article>
              </div>

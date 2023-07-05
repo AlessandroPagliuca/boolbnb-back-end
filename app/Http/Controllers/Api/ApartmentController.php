@@ -31,7 +31,11 @@ class ApartmentController extends Controller
             'status' => 'success',
             'message' => 'ok',
             'data' => $apartments->items(),
-        ]);
+            'meta' => [
+                'current_page' => $apartments->currentPage(),
+                'last_page' => $apartments->lastPage(),
+            ],
+        ], 200);
     }
 
 
