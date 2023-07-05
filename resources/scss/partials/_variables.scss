@@ -22,36 +22,15 @@ $black: #222222;
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.navbar{
+.navbar {
     background-color: $black !important;
-    .nav-item{
-        a.nav-link{
+
+    .nav-item {
+        a.nav-link {
             color: $white;
             transition: all .5s;
 
-            &:hover{
+            &:hover {
                 border-bottom: 3px solid $primary;
                 color: $primary !important;
             }
@@ -59,7 +38,7 @@ $black: #222222;
     }
 }
 
-.anas{
+.anas {
     color: $primary !important;
 }
 
@@ -69,4 +48,3 @@ $black: #222222;
     border: 0;
     box-shadow: 1px 1px 12px 6px rgba(103, 103, 104, 0.2);
 }
-
