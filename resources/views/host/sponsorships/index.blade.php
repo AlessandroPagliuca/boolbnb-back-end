@@ -16,7 +16,7 @@
         <div class="bg-black text-white d-flex align-items-center justify-content-center py-5">
             <div class="row container-fluid">
                 @foreach ($sponsorships as $sponsor)
-                    <div class="col-12 col-lg-4">
+                    <div class="col-12 col-md-6 col-xl-4">
                         <div class="card bg-dark-card text-white my-5 mx-0 mx-sm-5 mx-lg-0 d-flex flex-column">
                             <div class="border-bottom">
                                 <div class="m-auto d-flex align-content-center flex-column justify-content-center p-5">
