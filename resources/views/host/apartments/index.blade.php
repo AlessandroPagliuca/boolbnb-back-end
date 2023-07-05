@@ -61,7 +61,7 @@
 
                                     <!--DA RIVEDERE-->
                                     <a class="m-1 btn btn-success"
-                                        href="{{ route('host.sponsorships.show', $apartment->slug) }}">
+                                        href="{{ route('host.sponsorships.index', $apartment->slug) }}">
                                         <i class="fa-solid fa-money-bills"></i>
                                     </a>
                                 </div>
