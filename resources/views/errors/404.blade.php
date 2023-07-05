@@ -1,7 +1,15 @@
-@extends('errors::minimal')
-
-<!-- about -->
-<div class="about">
+@extends('errors.minimal')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../scss/partials/_404.scss">
+    <title>Document</title>
+</head>
+<body>
+    <div class="about">
     <a class="bg_links social portfolio" href="https://www.rafaelalucas.com" target="_blank">
        <span class="icon"></span>
     </a>
@@ -63,7 +71,6 @@
          </div>
      </section>
 
-     <script>
-        var scene = document.getElementById('scene');
-        var parallax = new Parallax(scene);
-     </script>
+</body>
+</html>
+<!-- about -->
