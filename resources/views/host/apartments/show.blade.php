@@ -10,6 +10,17 @@
     <div class="main-content">
         <div class="container">
             <div class="row">
+                <div class="col-12 my-3">
+                    @if (Str::startsWith($apartment->main_img, 'http'))
+                        <img style="width: 275px; height:275px; object-fit:cover;" class="rounded-4"
+                            src="{{ $apartment->main_img }}" alt="{{$apartment->title}}">
+                    @else
+                        <img style="width: 275px; height:275px; object-fit:cover;" class="rounded-4"
+                            src="{{ asset('storage/public/images/apartments/' . $apartment->main_img) }}" alt="{{$apartment->title}}">
+                    @endif
+
+
+                </div>
                 <div class="col-12">
                     <h1 class="fw-bold fs-2 py-4">Name apartment: {{ $apartment->title }}</h1>
 
@@ -36,14 +47,6 @@
                 </div>
                 <div class="col-12 ">
                     <p class="badge badge-pill bg-dark p-2">Address: {{ $apartment->address }}</p>
-
-                </div>
-                <div class="col-12 ">
-                    <p class="badge badge-pill bg-dark p-2">Latitude: {{ $apartment->latitude }}</p>
-
-                </div>
-                <div class="col-12 ">
-                    <p class="badge badge-pill bg-dark p-2">Longitude: {{ $apartment->longitude }}</p>
 
                 </div>
                 <div class="col-12 ">
