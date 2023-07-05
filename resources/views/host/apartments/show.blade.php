@@ -11,8 +11,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 my-3">
-                    <img style="width: 275px; height:275px; object-fit:cover;" class="rounded-5"
-                        src="{{ asset('storage/public/images/apartments/' . $apartment->main_img) }}" alt="Apartment Image">
+                    @if (Str::startsWith($apartment->main_img, 'http'))
+                        <img style="width: 275px; height:275px; object-fit:cover;" class="rounded-4"
+                            src="{{ $apartment->main_img }}" alt="{{$apartment->title}}">
+                    @else
+                        <img style="width: 275px; height:275px; object-fit:cover;" class="rounded-4"
+                            src="{{ asset('storage/public/images/apartments/' . $apartment->main_img) }}" alt="{{$apartment->title}}">
+                    @endif
+
 
                 </div>
                 <div class="col-12">
