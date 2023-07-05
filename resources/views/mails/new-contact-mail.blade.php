@@ -2,10 +2,9 @@
 
 @section('content')
     <div class="d-flex justify-content-start p-3">
-        <h1>Hi host!</h1>
+        <h2>Hi host!</h2>
         <p>
             You have received a new message, here are the details:<br>
-            Name: {{ $message->name }}<br>
             Email: {{ $message->email }}<br>
             Message:<br>
             {{ $message->message }}
