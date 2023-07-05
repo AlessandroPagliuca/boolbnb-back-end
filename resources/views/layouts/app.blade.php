@@ -21,11 +21,10 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md ">
+        <nav class="navbar navbar-expand-md">
             <div class="container">
-                <a class="navbar-brand text-uppercase" href="{{ route('host.dashboard') }}"><img
-
-                    src="{{ asset('/img/logo-boolbnb.png') }}" style="width: 50px; height: 50px; object-fit:cover;"
+                <a class="navbar-brand text-uppercase" href="{{ route('host.dashboard') }}">
+                    <img src="{{ asset('/img/logo-boolbnb.png') }}" style="width: 50px; height: 50px; object-fit:cover;"
                     alt="logo"></a>
                 <button class="navbar-toggler ah-hamburger-border text-white" type="button" data-bs-toggle="collapse"
 
@@ -38,7 +37,7 @@
                             <a class="nav-link text-uppercase {{ request()->routeIs('host.dashboard') ? 'active' : '' }}" href="{{ route('host.dashboard') }}">Dashboard</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link text-uppercase {{ request()->routeIs('host.apartments.index') ? 'active' : '' }}"
+                            <a class="nav-link text-uppercase {{ request()->routeIs('host.apartments.*') ? 'active' : '' }}"
                                 href="{{ route('host.apartments.index') }}">Apartments</a>
                         </li>
                         <li class="nav-item dropdown">
@@ -77,7 +76,6 @@
 
 
         <main>
-
             @yield('content')
         </main>
     </div>

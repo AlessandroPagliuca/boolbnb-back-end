@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Host\DashboardController;
 use App\Http\Controllers\Host\ApartmentController;
-
+use App\Http\Controllers\Host\SponsorshipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +30,12 @@ Route::middleware(['auth', 'verified'])->name('host.')->prefix('host')->group(fu
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('apartments', ApartmentController::class)->parameters(['apartments' => 'apartment:slug']);
+
+});
+
+Route::middleware(['auth', 'verified'])->name('host.')->prefix('host')->group(function () {
+
+    Route::resource('sponsorships', SponsorshipController::class);
 
 });
 
