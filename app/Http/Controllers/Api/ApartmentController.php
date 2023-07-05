@@ -25,17 +25,19 @@ class ApartmentController extends Controller
 
     public function index()
     {
-        $apartments = Apartment::all();
+        $apartments = Apartment::paginate(12);
+
         return response()->json([
             'status' => 'success',
             'message' => 'ok',
-            'results' => $apartments
-        ], 200);
+            'data' => $apartments->items(),
+        ]);
     }
+
 
     public function show($slug)
     {
-        $apartment = Apartment::with('services', 'images')->where('slug', $slug)->first();
+        $apartment = Apartment::with('services')->where('slug', $slug)->first();
 
         if ($apartment) {
             return response()->json([
