@@ -14,7 +14,7 @@
             <div class="mb-3">
                 <label for="title" class="fw-bold">Title</label>
                 <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
-                    id="title" value="{{ old('title', $apartment->title) }}">
+                    id="title" value="{{ old('title', $apartment->title) }}"  minlength="3" maxlength="100" required>
                 @error('title')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -26,7 +26,7 @@
             <div class="mb-3">
                 <label for="description" class="fw-bold">Description</label>
                 <input type="text" class="form-control @error('description') is-invalid @enderror" name="description"
-                    id="description" value="{{ old('description', $apartment->description) }}">
+                    id="description" value="{{ old('description', $apartment->description) }}"  minlength="10" required>
                 @error('description')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -42,7 +42,7 @@
             <div class="mb-3">
                 <label for="rooms" class="fw-bold">Rooms</label>
                 <input type="text" class="form-control @error('rooms') is-invalid @enderror" name="rooms"
-                    id="rooms" value="{{ old('rooms', $apartment->rooms) }}">
+                    id="rooms" value="{{ old('rooms', $apartment->rooms) }}" min="1" max="6" required>
                 @error('rooms')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -50,7 +50,7 @@
             <div class="mb-3">
                 <label for="beds" class="fw-bold">Beds</label>
                 <input type="text" class="form-control @error('beds') is-invalid @enderror" name="beds" id="beds"
-                    value="{{ old('beds', $apartment->beds) }}">
+                    value="{{ old('beds', $apartment->beds) }}" min="1" max="10" required>
                 @error('beds')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -59,7 +59,7 @@
             <div class="mb-3">
                 <label for="bathrooms" class="fw-bold">Bathrooms</label>
                 <input type="text" class="form-control @error('bathrooms') is-invalid @enderror" name="bathrooms"
-                    id="bathrooms" value="{{ old('bathrooms', $apartment->bathrooms) }}">
+                    id="bathrooms" value="{{ old('bathrooms', $apartment->bathrooms) }}" min="1" max="3" required>
                 @error('bathrooms')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -67,7 +67,7 @@
             <div class="mb-3">
                 <label for="square_meters" class="fw-bold">Square meters (m²)</label>
                 <input type="text" class="form-control @error('square_meters') is-invalid @enderror" name="square_meters"
-                    id="square_meters" value="{{ old('square_meters', $apartment->square_meters) }}">
+                    id="square_meters" value="{{ old('square_meters', $apartment->square_meters) }}" min="0" max="500" required>
                 @error('square_meters')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -75,7 +75,7 @@
             <div class="mb-3">
                 <label for="address" class="fw-bold">Address</label>
                 <input type="text" class="form-control @error('address') is-invalid @enderror" name="address"
-                    id="address" value="{{ old('address', $apartment->address) }}">
+                    id="address" value="{{ old('address', $apartment->address) }}" minlength="3" maxlength="255" required>
                 @error('address')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -84,7 +84,7 @@
             <div class="mb-3">
                 <label for="city" class="fw-bold">City</label>
                 <input type="text" class="form-control @error('city') is-invalid @enderror" name="city" id="city"
-                    value="{{ old('city', $apartment->city) }}">
+                    value="{{ old('city', $apartment->city) }}" minlength="3" maxlength="100" required>
                 @error('city')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -93,7 +93,7 @@
             <div class="mb-3">
                 <label for="country" class="fw-bold">Country</label>
                 <input type="text" class="form-control @error('country') is-invalid @enderror" name="country"
-                    id="country" value="{{ old('country', $apartment->country) }}">
+                    id="country" value="{{ old('country', $apartment->country) }}" minlength="1" maxlength="100" required>
                 @error('country')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -102,7 +102,7 @@
             <div class="mb-3">
                 <label for="zipcode" class="fw-bold">zipcode</label>
                 <input type="text" class="form-control @error('zipcode') is-invalid @enderror" name="zipcode"
-                    id="zipcode" value="{{ old('zipcode', $apartment->zipcode) }}">
+                    id="zipcode" value="{{ old('zipcode', $apartment->zipcode) }}" minlength="1" maxlength="100" required>
                 @error('zipcode')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -111,7 +111,7 @@
             <div class="mb-3">
                 <label for="price" class="fw-bold">Price per night</label>
                 <input type="text" class="form-control @error('price') is-invalid @enderror" name="price"
-                    id="price" value="{{ old('price', $apartment->price) }}">
+                    id="price" value="{{ old('price', $apartment->price) }}" min="1" max="99999" required>
                 @error('price')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -164,3 +164,4 @@
         </form>
     </div>
 @endsection
+
