@@ -194,7 +194,7 @@
                         </div>
                     @endforeach
                     @error('services')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="alert alert-danger pb-3">Select at least one service.</div>
                     @enderror
                 </div>
             </div>

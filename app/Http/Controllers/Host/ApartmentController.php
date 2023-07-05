@@ -15,6 +15,7 @@ use App\Models\Sponsorship;
 use App\Models\User;
 use App\Models\View;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 
 
@@ -52,7 +53,7 @@ class ApartmentController extends Controller
      */
     public function store(StoreApartmentRequest $request)
     {
-     
+
         $form_data = $request->validated();
         $form_data['visible'] = $request->input('visible', true);
         $slug = Str::slug($request->title, '-');
@@ -63,10 +64,20 @@ class ApartmentController extends Controller
             $uniqueSlug = $slug . '-' . $counter;
             $counter++;
         }
+        // Validazione dei dati inseriti nel form
+        $validator = Validator::make($request->all(), [
+            'services' => 'required|array|min:1', // Almeno un servizio deve essere selezionato
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $form_data['slug'] = $uniqueSlug;
         $form_data['user_id'] = Auth::id();
-        if($request->hasFile('main_img')){
+        if ($request->hasFile('main_img')) {
             $destination_path = 'public/images/apartments';
             $image = $request->file('main_img');
             $image_name = $image->getClientOriginalName();
@@ -83,7 +94,7 @@ class ApartmentController extends Controller
             $newApartment->sponsorships()->attach($request->sponsorships);
         }
 
-        
+
         return redirect()->route('host.apartments.show', $newApartment->slug);
         // ->with('message', "L'appartamento {$newApartment->name} è stato aggiunto con successo! :)");
     }
@@ -139,7 +150,7 @@ class ApartmentController extends Controller
 
         $data['slug'] = $uniqueSlug;
 
-        if($request->hasFile('main_img')){
+        if ($request->hasFile('main_img')) {
             Storage::delete($apartment->main_img);
             $destination_path = 'public/images/apartments';
             $image = $request->file('main_img');
