@@ -8,9 +8,24 @@ use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
 {
+    public function home()
+    {
+        $apartments = Apartment::with('sponsorships')
+            ->whereHas('sponsorships', function ($query) {
+                $query->where('expiration_date', '>', now());
+            })
+            ->get();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'ok',
+            'results' => $apartments
+        ], 200);
+    }
+
     public function index()
     {
-        $apartments = Apartment::with('sponsorships')->paginate(5);
+        $apartments = Apartment::all();
         return response()->json([
             'status' => 'success',
             'message' => 'ok',
@@ -34,7 +49,5 @@ class ApartmentController extends Controller
                 'message' => 'Apartment not found !'
             ], 404);
         }
-
-
     }
 }

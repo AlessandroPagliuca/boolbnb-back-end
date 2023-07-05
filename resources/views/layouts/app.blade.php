@@ -35,10 +35,10 @@
                 <div class="collapse navbar-collapse" id="mynav">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
                         <li class="nav-item " >
-                            <a class="nav-link text-uppercase {{ request()->routeIs('host.dashboard') ? 'anas' : '' }}" href="{{ route('host.dashboard') }}">Dashboard</a>
+                            <a class="nav-link text-uppercase {{ request()->routeIs('host.dashboard') ? 'active' : '' }}" href="{{ route('host.dashboard') }}">Dashboard</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link text-uppercase {{ request()->routeIs('host.apartments.index') ? 'anas' : '' }}"
+                            <a class="nav-link text-uppercase {{ request()->routeIs('host.apartments.index') ? 'active' : '' }}"
                                 href="{{ route('host.apartments.index') }}">Apartments</a>
                         </li>
                         <li class="nav-item dropdown">
