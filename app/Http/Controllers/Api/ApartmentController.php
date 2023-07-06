@@ -10,7 +10,7 @@ class ApartmentController extends Controller
 {
     public function home()
     {
-        $apartments = Apartment::with('sponsorships');
+        $apartments = Apartment::with('sponsorships')->get();
             // ->whereHas('sponsorships', function ($query) {
             //     $query->where('end_date', '>', now());
             // })
