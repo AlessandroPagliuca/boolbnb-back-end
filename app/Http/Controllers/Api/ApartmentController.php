@@ -10,11 +10,11 @@ class ApartmentController extends Controller
 {
     public function home()
     {
-        $apartments = Apartment::with('sponsorships')
-            ->whereHas('sponsorships', function ($query) {
-                $query->where('end_date', '>', now());
-            })
-            ->get();
+        $apartments = Apartment::with('sponsorships')->get();
+            // ->whereHas('sponsorships', function ($query) {
+            //     $query->where('end_date', '>', now());
+            // })
+            // ->get();
 
         return response()->json([
             'status' => 'success',
