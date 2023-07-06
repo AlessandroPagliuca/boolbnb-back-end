@@ -68,6 +68,7 @@
                             <div class="row d-flex align-items-center justify-content-center gap-4">
                                 <!--DATE_OF_BIRTH-->
                                 <div class="col-12 border-pink">
+                                    <label for="date_of birth">Date of birth</label>
                                     <input id="date_of_birth" type="date" class="form-control px-4 py-3 mb-4 rounded-5"
                                         name="date_of_birth" value="{{ old('date_of_birth') }}" placeholder="Date of birth"
                                         autocomplete="date_of_birth" autofocus>
