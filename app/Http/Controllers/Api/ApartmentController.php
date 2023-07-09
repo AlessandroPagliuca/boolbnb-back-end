@@ -24,16 +24,12 @@ class ApartmentController extends Controller
 
     public function index()
     {
-        $apartments = Apartment::paginate(12);
+        $apartments = Apartment::with('services')->get();
 
         return response()->json([
             'status' => 'success',
             'message' => 'ok',
-            'data' => $apartments->items(),
-            'meta' => [
-                'current_page' => $apartments->currentPage(),
-                'last_page' => $apartments->lastPage(),
-            ],
+            'data' => $apartments,
         ], 200);
     }
 

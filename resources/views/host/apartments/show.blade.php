@@ -9,14 +9,55 @@
 @section('content')
     <div class="main-content">
         <div class="container">
+            <p class=" text-uppercase py-3 fs-1">{{ $apartment->title }}</p>
+            <div
+                class="container-fluid py-4 d-flex align-items-center justify-content-around bg-apartment text-center text-white">
+
+                <p class="text-center m-0">VISIBLE<br>
+                    @if ($apartment->visible)
+                        Yes
+                    @else
+                        No
+                    @endif
+                </p>
+
+                <p class="text-center m-0">ROOMS<br>
+                    <i class="fa-solid fa-person-shelter"></i> {{ $apartment->rooms }}
+                </p>
+
+                <p class="text-center m-0">BEDS<br>
+                    <i class="fa-solid fa-bed"></i> {{ $apartment->rooms }}
+                </p>
+
+                <p class="text-center m-0">BATHROOMS<br>
+                    <i class="fa-solid fa-toilet"></i> {{ $apartment->bathrooms }}
+                </p>
+
+                <p class="text-center m-0 text-capitalize">ADDRESS<br>
+                    {{ $apartment->address }}, {{ $apartment->city }}, {{ $apartment->zipcode }}, {{ $apartment->country }}
+                </p>
+
+                <p class="text-center m-0 text-capitalize">LAST UPDATE<br>
+                    {{ $apartment->updated_at }}
+                </p>
+
+                <div class=" d-flex justify-content-center">
+                    <a class="btn btn-outline-primary btn-hover border-3 fw-semibold"
+                        href="{{ route('host.sponsorships.index', $apartment->slug) }}">
+                        Add sponsor
+                    </a>
+                </div>
+
+            </div>
             <div class="row">
                 <div class="col-12 my-3">
                     @if (Str::startsWith($apartment->main_img, 'http'))
                         <img style="width: 275px; height:275px; object-fit:cover;" class="rounded-4"
-                            src="{{ $apartment->main_img }}" alt="{{$apartment->title}}">
+                            src="{{ $apartment->main_img }}" alt="{{ $apartment->title }}">
                     @else
                         <img style="width: 275px; height:275px; object-fit:cover;" class="rounded-4"
-                            src="{{ asset('storage/public/images/apartments/' . $apartment->main_img) }}" alt="{{$apartment->title}}">
+                            src="{{ asset('storage/public/images/apartments/' . $apartment->main_img) }}"
+                            alt="{{ $apartment->title }}">
                     @endif
 
 
