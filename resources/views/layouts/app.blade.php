@@ -25,7 +25,7 @@
             <div class="container">
                 <a class="navbar-brand text-uppercase" href="{{ route('host.dashboard') }}">
                     <img src="{{ asset('/img/logo-boolbnb.png') }}" style="width: 50px; height: 50px; object-fit:cover;"
-                    alt="logo"></a>
+                        alt="logo"></a>
 
                 <button class="navbar-toggler ah-hamburger-border text-white" type="button" data-bs-toggle="collapse"
                     data-bs-target="#mynav" aria-controls="mynav" aria-expanded="false" aria-label="Toggle navigation">
