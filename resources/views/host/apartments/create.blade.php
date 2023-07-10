@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h2 class="my-4">Add your apartments</h2>
-        <form class="fw-semibold" action="{{ route('host.apartments.store') }}" method="POST" enctype="multipart/form-data">
+        <form class="fw-semibold" onsubmit="validateForm(event)" id="createForm"  action="{{ route('host.apartments.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row align-items-center justify-content-center">
                 <!--Title-->
@@ -172,6 +172,7 @@
                     <div class="col-12">
                         <p class="text-dark">Select one or more services:</p>
                     </div>
+                    
                     @foreach ($services as $service)
                         <div class="col-12 col-sm-6 col-md-4">
 
@@ -186,9 +187,12 @@
                             @endif
                         </div>
                     @endforeach
+                    <div class="fs-3 text-danger" id="servicesError" ></div>
                     @error('services')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                        <div id="servicesError" class="invalid-feedback">{{ $message }}</div>
                     @enderror
+                    
+
                 </div>
             </div>
     </div>
@@ -196,7 +200,32 @@
         <!--btn save and reset-->
         <button type="submit" class="btn btn-dark">Save</button>
         <button type="reset" class="btn btn-primary text-white">Reset</button>
-        </form>
+        
     </div>
+    </form>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault(); // Prevents default form submission behavior
+
+            var checkboxes = document.querySelectorAll('input[name="services[]"]');
+            var isChecked = false;
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    isChecked = true;
+                    break;
+                }
+            }
+            var servicesError = document.getElementById('servicesError');
+            if (!isChecked) {
+                servicesError.textContent = 'Please select at least one service.';
+                return false;
+            }else{
+                document.getElementById('createForm').submit();
+            }
+
+        }
+    </script>
 @endsection
 

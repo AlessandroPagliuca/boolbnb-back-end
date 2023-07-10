@@ -8,7 +8,7 @@
         <a class="m-1" href="{{ route('host.apartments.show', $apartment->slug) }}"><button class="btn btn-warning">
                 Show</button></a>
 
-        <form action="{{ route('host.apartments.update', $apartment->slug) }}" method="POST" enctype="multipart/form-data" class="row">
+        <form action="{{ route('host.apartments.update', $apartment->slug) }}" onsubmit="validateForm(event)" id="editForm" method="POST" enctype="multipart/form-data" class="row">
             @csrf
             @method('PUT')
             <div  class="col-6 border-pink mb-3">
@@ -129,7 +129,7 @@
                     <div class="col-12 col-sm-6 col-md-4">
 
                         <input type="checkbox" name="services[]" value="{{ $service->id }}" class="form-check-input"
-                            {{ in_array($service->id, old('services', [])) ? 'checked' : '' }}>
+                        {{ in_array($service->id, old('services', $apartment->services->pluck('id')->toArray())) ? 'checked' : '' }}>
                         @if ($service->icon == 'instagram fa-rotate-180')
                             <i class="fa-brands fa-{{ $service->icon }} px-2"></i>
                         @else
@@ -139,6 +139,8 @@
                     </div>
                 
                 @endforeach
+                <div class="fs-3 text-danger" id="servicesError" ></div>
+
                 </div>
                 @error('services')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -158,61 +160,25 @@
 @endsection
 
 <script>
-  // Client-side form validation
-  document.getElementById("apartmentForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent form submission
+        function validateForm(event) {
+            event.preventDefault(); // Prevents default form submission behavior
 
-    // Clear previous error messages
-    clearErrorMessages();
+            var checkboxes = document.querySelectorAll('input[name="services[]"]');
+            var isChecked = false;
 
-    // Perform validation for each field
-    var title = document.getElementById("title").value;
-    if (title.length < 3 || title.length > 100) {
-      displayErrorMessage("title", "Title must be between 3 and 100 characters.");
-    }
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    isChecked = true;
+                    break;
+                }
+            }
+            var servicesError = document.getElementById('servicesError');
+            if (!isChecked) {
+                servicesError.textContent = 'Please select at least one service.';
+                return false;
+            }else{
+                document.getElementById('editForm').submit();
+            }
 
-    var description = document.getElementById("description").value;
-    if (description.length < 10) {
-      displayErrorMessage("description", "Description must be at least 10 characters.");
-    }
-
-    var rooms = document.getElementById("rooms").value;
-    if (rooms < 1 || rooms > 6) {
-      displayErrorMessage("rooms", "Number of rooms must be between 1 and 6.");
-    }
-
-    var beds = document.getElementById("beds").value;
-    if (beds < 1 || beds > 10) {
-      displayErrorMessage("beds", "Number of beds must be between 1 and 10.");
-    }
-
-    var bathrooms = document.getElementById("bathrooms").value;
-    if (bathrooms < 1 || bathrooms > 3) {
-      displayErrorMessage("bathrooms", "Number of bathrooms must be between 1 and 3.");
-    }
-
-    var squareMeters = document.getElementById("square_meters").value;
-    if (squareMeters < 0 || squareMeters > 500) {
-      displayErrorMessage("square_meters", "Square meters must be between 0 and 500.");
-    }
-
-    // If there are no errors, submit the form
-    if (document.getElementsByClassName("error").length === 0) {
-      document.getElementById("apartmentForm").submit();
-    }
-  });
-
-  // Function to display an error message for a field
-  function displayErrorMessage(fieldId, message) {
-    var errorDiv = document.getElementById(fieldId + "Error");
-    errorDiv.innerText = message;
-  }
-
-  // Function to clear all error messages
-  function clearErrorMessages() {
-    var errorDivs = document.getElementsByClassName("error");
-    for (var i = 0; i < errorDivs.length; i++) {
-      errorDivs[i].innerText = "";
-    }
-  }
+        }
 </script>
