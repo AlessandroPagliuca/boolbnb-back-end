@@ -8,10 +8,21 @@
 
 @section('content')
     <div class="main-content">
-        <div class="container">
-            <p class=" text-uppercase py-3 fs-1">{{ $apartment->title }}</p>
+        <div class="container show-container">
+            <a class="" href="{{ route('host.apartments.index') }}"><button
+                    class="btn btn-primary text-white rounded-circle fs-4">
+                    <i class="fa-solid fa-arrow-left"></i></button>
+            </a>
+            <div class="d-flex align-items-center gap-1">
+                <p class=" text-uppercase py-3 fs-1 m-0">{{ $apartment->title }}</p>
+                <a class="btn btn-outline-primary btn-hover border-3 fw-semibold d-md-none"
+                    href="{{ route('host.sponsorships.index', $apartment->slug) }}">
+                    Add sponsor
+                </a>
+            </div>
+
             <div
-                class="container-fluid py-4 d-flex align-items-center justify-content-around bg-apartment text-center text-white">
+                class="container-fluid py-4 mb-5 d-flex align-items-center justify-content-around bg-apartment text-center text-white d-none d-md-inline-flex">
 
                 <p class="text-center m-0">VISIBLE<br>
                     @if ($apartment->visible)
@@ -26,7 +37,7 @@
                 </p>
 
                 <p class="text-center m-0">BEDS<br>
-                    <i class="fa-solid fa-bed"></i> {{ $apartment->rooms }}
+                    <i class="fa-solid fa-bed"></i> {{ $apartment->beds }}
                 </p>
 
                 <p class="text-center m-0">BATHROOMS<br>
@@ -34,10 +45,11 @@
                 </p>
 
                 <p class="text-center m-0 text-capitalize">ADDRESS<br>
-                    {{ $apartment->address }}, {{ $apartment->city }}, {{ $apartment->zipcode }}, {{ $apartment->country }}
+                    {{ $apartment->address }}, {{ $apartment->city }}, <span
+                        class=" d-none d-lg-block">{{ $apartment->zipcode }},</span>{{ $apartment->country }}
                 </p>
 
-                <p class="text-center m-0 text-capitalize">LAST UPDATE<br>
+                <p class="text-center m-0 text-capitalize d-none d-lg-block">LAST UPDATE<br>
                     {{ $apartment->updated_at }}
                 </p>
 
@@ -49,101 +61,110 @@
                 </div>
 
             </div>
-            <div class="row">
-                <div class="col-12 my-3">
-                    @if (Str::startsWith($apartment->main_img, 'http'))
-                        <img style="width: 275px; height:275px; object-fit:cover;" class="rounded-4"
-                            src="{{ $apartment->main_img }}" alt="{{ $apartment->title }}">
-                    @else
-                        <img style="width: 275px; height:275px; object-fit:cover;" class="rounded-4"
-                            src="{{ asset('storage/public/images/apartments/' . $apartment->main_img) }}"
-                            alt="{{ $apartment->title }}">
-                    @endif
 
+            <div class="row flex-column-reverse flex-md-row">
 
-                </div>
-                <div class="col-12">
-                    <h1 class="fw-bold fs-2 py-4">Name apartment: {{ $apartment->title }}</h1>
+                <div class="col-12 col-md-6">
+                    <div>
+                        <p><span class="fw-bold text-uppercase">description</span><br>
+                            {{ $apartment->description }}
+                        </p>
 
-                </div>
-                <div class="col-12">
-                    <p class="badge badge-pill bg-dark p-2">Description: {{ $apartment->description }}</p>
+                    </div>
+                    <div class="d-md-none">
+                        <p><span class="fw-bold">ROOMS</span><br>
+                            <i class="fa-solid fa-person-shelter"></i> {{ $apartment->rooms }}
+                        </p>
 
-                </div>
-                <div class="col-12">
-                    <p class="badge badge-pill bg-dark  p-2">Rooms: {{ $apartment->rooms }}</p>
+                        <p> <span class="fw-bold">BEDS</span><br>
+                            <i class="fa-solid fa-bed"></i> {{ $apartment->rooms }}
+                        </p>
 
-                </div>
-                <div class="col-12">
-                    <p class="badge badge-pill bg-dark p-2">Beds: {{ $apartment->beds }}</p>
+                        <p><span class="fw-bold">BATHROOMS</span><br>
+                            <i class="fa-solid fa-toilet"></i> {{ $apartment->bathrooms }}
+                        </p>
 
-                </div>
-                <div class="col-12">
-                    <p class="badge badge-pill bg-dark p-2">Bathrooms: {{ $apartment->bathrooms }}</p>
+                        <p><span class="fw-bold text-uppercase">address</span><br>
+                            {{ $apartment->address }}, {{ $apartment->city }},
+                            {{ $apartment->zipcode }},{{ $apartment->country }}
+                        </p>
+                        <p><span class="fw-bold text-uppercase">last update</span><br>
+                            {{ $apartment->updated_at }}
+                        </p>
+                    </div>
 
-                </div>
-                <div class="col-12 ">
-                    <p class="badge badge-pill bg-dark p-2">Square meters: {{ $apartment->square_meters }}</p>
-
-                </div>
-                <div class="col-12 ">
-                    <p class="badge badge-pill bg-dark p-2">Address: {{ $apartment->address }}</p>
-
-                </div>
-                <div class="col-12 ">
-                    <p class="badge badge-pill bg-dark p-2">Visible: {{ $apartment->visible }}</p>
-
-                </div>
-                <div class="col-12 ">
-                    <p class="badge badge-pill bg-dark p-2">price per night: {{ $apartment->price }}</p>
-
-                </div>
-                <div>
-                    @if ($apartment->services && count($apartment->services) > 0)
-                        <div>
-                            @foreach ($apartment->services as $service)
-                                <div>
-                                    <span>{{ $service->name }}</span>
-                                    @if ($service->icon == 'instagram fa-rotate-180')
-                                        <i class="fa-brands fa-{{ $service->icon }} px-2"></i>
-                                    @else
-                                        <i class="fa-solid fa-{{ $service->icon }} px-2"></i>
-                                    @endif
-                                </div>
-                            @endforeach
-                        </div>
-                    @endif
-                </div>
-                <div>
-                    @if ($apartment->sponsorships && count($apartment->sponsorships) > 0)
-                        <div>
-                            @foreach ($apartment->sponsorships as $sponsorship)
-                                <div>
-                                    <span>{{ $sponsorship->name }}</span>
-                                    <span>{{ $sponsorship->duration }}</span>
-                                    <span>{{ $sponsorship->description }}</span>
-                                    <span>{{ $sponsorship->price }}</span>
-                                </div>
-                            @endforeach
-                        </div>
-                    @endif
+                    <div>
+                        <p><span class="fw-bold text-uppercase">Square meters</span><br>
+                            {{ $apartment->square_meters }} mq.
+                        </p>
+                    </div>
+                    <div>
+                        <p><span class="fw-bold text-uppercase">Price for night</span><br>
+                            {{ $apartment->price }}
+                        </p>
+                    </div>
+                    <div>
+                        @if ($apartment->services && count($apartment->services) > 0)
+                            <div>
+                                <p class="text-uppercase fw-bold fs-4 m-0">Services</p>
+                                @foreach ($apartment->services as $service)
+                                    <div>
+                                        <span>{{ $service->name }}</span>
+                                        @if ($service->icon == 'instagram fa-rotate-180')
+                                            <i class="fa-brands fa-{{ $service->icon }} px-2"></i>
+                                        @else
+                                            <i class="fa-solid fa-{{ $service->icon }} px-2"></i>
+                                        @endif
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+                    <div class="my-2">
+                        @if ($apartment->sponsorships && count($apartment->sponsorships) > 0)
+                            <div>
+                                <p class="text-uppercase fw-bold fs-4 m-0">Sponsorship</p>
+                                @foreach ($apartment->sponsorships as $sponsorship)
+                                    <div>
+                                        <span>{{ $sponsorship->name }}</span>
+                                        <span>{{ $sponsorship->duration }}</span>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
                 </div>
 
-                <div class="col-12">
-                    <a class="m-1 btn btn-success" href="{{ route('host.apartments.edit', $apartment->slug) }}">
-                        Edit
-                    </a>
-                    <a class="m-1 btn btn-warning" href="{{ route('host.apartments.index') }}">
-                        Go back
-                    </a>
-                    <form action="{{ route('host.apartments.destroy', $apartment->slug) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="delete-btn btn btn-danger m-1" type="submit">Delete</button>
-                    </form>
+                <div class="col-12 col-md-6">
+                    <div class="mb-5">
+                        @if (Str::startsWith($apartment->main_img, 'http'))
+                            <img class="rounded-4 img-fluid" src="{{ $apartment->main_img }}"
+                                alt="{{ $apartment->title }}">
+                        @else
+                            <img class="rounded-4 img-fluid"
+                                src="{{ asset('storage/public/images/apartments/' . $apartment->main_img) }}"
+                                alt="{{ $apartment->title }}">
+                        @endif
+
+
+                    </div>
+
                 </div>
+
             </div>
-
+            <div class=" d-flex">
+                <a class="m-1 btn btn-success" href="{{ route('host.apartments.edit', $apartment->slug) }}">
+                    Edit
+                </a>
+                {{-- <a class="m-1 btn btn-warning" href="{{ route('host.apartments.index') }}">
+                    Go back
+                </a> --}}
+                <form action="{{ route('host.apartments.destroy', $apartment->slug) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="delete-btn btn btn-danger m-1" type="submit">Delete</button>
+                </form>
+            </div>
         </div>
     </div>
     @include('../../partials/modal')
