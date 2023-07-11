@@ -183,6 +183,31 @@ class ApartmentController extends Controller
             $path = $request->file('main_img')->storeAs($destination_path, $image_name);
             $data['main_img'] = $image_name;
         }
+
+        $api_query = $data['address'] . ' ' . $data['city'] . ' ' . $data['country'];
+        $response = Http::withoutVerifying()
+            ->get('https://api.tomtom.com/search/2/geocode/' . urlencode($api_query) . '.json', [
+                'key' => env('GEOCODING_API_KEY'),
+            ]);
+        
+            if ($response->successful()) {
+                $responseData = $response->json();
+            
+                if (!empty($responseData['results'])) {
+                    $firstResult = $responseData['results'][0];
+            
+                    $data['latitude'] = $firstResult['position']['lat'];
+                    $data['longitude'] = $firstResult['position']['lon'];
+            
+                    // Use the $form_data['latitude'] and $form_data['longitude'] variables as needed
+                } else {
+                    // Handle the case when no results are available
+                }
+            } else {
+                $error = $response->json('error_message');
+                // Handle the error appropriately (e.g., show an error message to the user)
+            }
+
         $apartment->update($data);
 
         if ($request->has('services')) {
