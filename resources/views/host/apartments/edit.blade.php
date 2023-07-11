@@ -85,7 +85,7 @@
             </div>
             
             <!--City-->
-            <div class="col-6 border-pink mb-3">
+            <div class="col-6  border-pink mb-3">
                 <label for="city" class="fw-bold">City</label>
                 <input type="text" class="form-control @error('city') is-invalid @enderror" name="city" id="city"
                     value="{{ old('city', $apartment->city) }}" minlength="3" maxlength="100" required>

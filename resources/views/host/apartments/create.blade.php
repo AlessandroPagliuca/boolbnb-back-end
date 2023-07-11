@@ -6,7 +6,7 @@
         <form class="fw-semibold" onsubmit="validateForm(event)" id="createForm"  action="{{ route('host.apartments.store') }}" method="POST" enctype="multipart/form-data">
 
             @csrf
-            <div class="row align-items-center justify-content-center">
+            <div class="row  align-items-center justify-content-center">
                 <!--Title-->
                 <div class="col-6 border-pink pb-3">
                     <label for="title">Title *</label>
