@@ -3,7 +3,10 @@
 @section('content')
     <section>
         <div class="wave-black fa-rotate-180"> </div>
-        <div class="bg-pink text-white d-flex align-items-center justify-content-center" style="height: 300px">
+        <div class="bg-pink text-white d-flex align-items-center justify-content-center flex-column" style="height: 300px">
+            <a class="m-1" href="{{ route('host.apartments.index') }}"><button
+                    class="btn btn-dark text-primary rounded-circle fs-4">
+                    <i class="fa-solid fa-arrow-left"></i></button></a>
             <h1 class="text-uppercase text-center py-3">choose the sponsorship that best suits you</h1>
 
         </div>
@@ -16,7 +19,7 @@
         <div class="bg-black text-white d-flex align-items-center justify-content-center py-5">
             <div class="row container-fluid">
                 @foreach ($sponsorships as $sponsor)
-                    <div class="col-12 col-md-6 col-xl-4">
+                    <div class="col-12 col-lg-6 col-xl-4">
                         <div class="card card-sponsor bg-dark-card text-white my-5 mx-0 mx-sm-5 mx-lg-0 d-flex flex-column">
                             <div class="border-bottom">
                                 <div class="m-auto d-flex align-content-center flex-column justify-content-center p-5">
