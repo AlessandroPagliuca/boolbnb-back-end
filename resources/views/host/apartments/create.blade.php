@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container py-3">
+        <a class="m-1" href="{{ route('host.apartments.index') }}"><button
+                class="btn btn-primary text-white rounded-circle fs-4">
+                <i class="fa-solid fa-arrow-left"></i></button></a>
         <h2 class="my-4">Add you apartments</h2>
-        <form class="fw-semibold" onsubmit="validateForm(event)" id="createForm"  action="{{ route('host.apartments.store') }}" method="POST" enctype="multipart/form-data">
+        <form class="fw-semibold" onsubmit="validateForm(event)" id="createForm" action="{{ route('host.apartments.store') }}"
+            method="POST" enctype="multipart/form-data">
 
             @csrf
             <div class="row align-items-center justify-content-center">
@@ -112,7 +116,8 @@
                 <div class="col-6 col-md-2 border-pink pb-3">
                     <label for="zipcode">Zipcode *</label>
                     <input type="text" class="form-control text-center @error('zipcode') is-invalid @enderror"
-                        name="zipcode" id="zipcode" value="{{ old('zipcode') }}" minlength="1" maxlength="100" required>
+                        name="zipcode" id="zipcode" value="{{ old('zipcode') }}" minlength="1" maxlength="100"
+                        required>
 
                     @error('zipcode')
                         <div class="invalid-feedback">
@@ -177,7 +182,7 @@
                     <div class="col-12 pb-3">
                         <p class="text-dark">Select one or more services:</p>
                     </div>
-                    
+
                     @foreach ($services as $service)
                         <div class="col-12 col-sm-6 col-md-4 pb-3">
 
@@ -192,13 +197,11 @@
                             @endif
                         </div>
                     @endforeach
-                    <div class="fs-3 text-danger" id="servicesError" ></div>
+                    <div class="fs-3 text-danger" id="servicesError"></div>
                     @error('services')
-
                         <div id="servicesError" class="invalid-feedback">{{ $message }}</div>
-
                     @enderror
-                    
+
 
                 </div>
             </div>
@@ -207,7 +210,7 @@
         <!--btn save and reset-->
         <button type="submit" class="btn btn-dark">Save</button>
         <button type="reset" class="btn btn-primary text-white">Reset</button>
-        
+
     </div>
     </form>
 
@@ -228,7 +231,7 @@
             if (!isChecked) {
                 servicesError.textContent = 'Please select at least one service.';
                 return false;
-            }else{
+            } else {
                 document.getElementById('createForm').submit();
             }
 
