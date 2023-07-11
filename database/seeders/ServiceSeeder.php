@@ -31,7 +31,7 @@ class ServiceSeeder extends Seeder
             ],
             [
                 'name' => 'ir conditioning',
-                'icon' => 'wind',
+                'icon' => 'snowflake',
             ],
             [
                 'name' => 'Breakfast included',
@@ -55,7 +55,8 @@ class ServiceSeeder extends Seeder
             ],
             [
                 'name' => 'Barbecue',
-                'icon' => 'stroopwafel ',// table-cells
+                'icon' => 'stroopwafel ',
+                // table-cells
             ],
             [
                 'name' => 'Heating',
@@ -79,11 +80,11 @@ class ServiceSeeder extends Seeder
             ],
             [
                 'name' => 'Washing machine',
-                'icon' => 'instagram fa-rotate-180',
+                'icon' => 'soap',
             ],
             [
                 'name' => 'Dryer',
-                'icon' => 'instagram fa-rotate-180',
+                'icon' => 'wind',
             ],
             [
                 'name' => 'TV',
