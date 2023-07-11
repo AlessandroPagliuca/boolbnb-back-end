@@ -95,6 +95,8 @@ main {
 
 .card-sponsor {
     min-height: 787px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .bg-apartment {
@@ -114,6 +116,22 @@ main {
     padding-top: 76px;
 }
 
+a:hover {
+    .fa-arrow-left {
+        animation: slide1 1s ease-in-out infinite;
+    }
+}
+
+@keyframes slide1 {
+    0%,
+    100% {
+        transform: translate(5px, 0);
+    }
+
+    50% {
+        transform: translate(-5px, 0);
+    }
+}
 // @media screen and (max-width: 1100px) {
 //     .card {
 //         min-height: 850px;
