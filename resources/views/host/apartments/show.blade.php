@@ -166,6 +166,24 @@
                 </form>
             </div>
         </div>
+        <!--Prova di recupero messaggio dal form nel front-end-->
+        <div class="container">
+            <h2>Messages</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    @foreach ($apartment->messages as $message)
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Email: {{ $message->email }}</h5>
+                                <p class="card-text">Message: {{ $message->message }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+
     </div>
     @include('../../partials/modal')
 @endsection
