@@ -13,20 +13,20 @@ class NewContact extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $message;
+    public $lead;
 
     /**
-     * Create a new message instance.
+     * Create a new lead instance.
      *
      * @return void
      */
-    public function __construct($_message)
+    public function __construct($_lead)
     {
-        $this->message = $_message;
+        $this->lead = $_lead;
     }
 
     /**
-     * Get the message envelope.
+     * Get the lead envelope.
      *
      * @return \Illuminate\Mail\Mailables\Envelope
      */
@@ -34,12 +34,12 @@ class NewContact extends Mailable
     {
         return new Envelope(
             subject: 'New Contact',
-            replyTo: $this->message->address
+            replyTo: $this->lead->email
         );
     }
 
     /**
-     * Get the message content definition.
+     * Get the lead content definition.
      *
      * @return \Illuminate\Mail\Mailables\Content
      */
@@ -51,7 +51,7 @@ class NewContact extends Mailable
     }
 
     /**
-     * Get the attachments for the message.
+     * Get the attachments for the lead.
      *
      * @return array
      */

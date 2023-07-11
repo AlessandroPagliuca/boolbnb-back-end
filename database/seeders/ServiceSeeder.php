@@ -56,14 +56,13 @@ class ServiceSeeder extends Seeder
             [
                 'name' => 'Barbecue',
                 'icon' => 'stroopwafel ',
-                // table-cells
             ],
             [
                 'name' => 'Heating',
                 'icon' => 'temperature-high',
             ],
             [
-                'name' => 'Patio o balcony',
+                'name' => 'Patio',
                 'icon' => 'house-chimney-window',
             ],
             [
