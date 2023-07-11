@@ -16,6 +16,7 @@ use App\Models\User;
 use App\Models\View;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Http;
 
 
 
@@ -85,7 +86,31 @@ class ApartmentController extends Controller
             $form_data['main_img'] = $image_name;
         }
 
-        $newApartment = Apartment::create($form_data);
+        $api_query = $form_data['address'] . ' ' . $form_data['city'] . ' ' . $form_data['country'];
+        $response = Http::withoutVerifying()
+            ->get('https://api.tomtom.com/search/2/geocode/' . urlencode($api_query) . '.json', [
+                'key' => env('GEOCODING_API_KEY'),
+            ]);
+        
+            if ($response->successful()) {
+                $responseData = $response->json();
+            
+                if (!empty($responseData['results'])) {
+                    $firstResult = $responseData['results'][0];
+            
+                    $form_data['latitude'] = $firstResult['position']['lat'];
+                    $form_data['longitude'] = $firstResult['position']['lon'];
+            
+                    // Use the $form_data['latitude'] and $form_data['longitude'] variables as needed
+                } else {
+                    // Handle the case when no results are available
+                }
+            } else {
+                $error = $response->json('error_message');
+                // Handle the error appropriately (e.g., show an error message to the user)
+            }
+
+            $newApartment = Apartment::create($form_data);
 
         if ($request->has('services')) {
             $newApartment->services()->attach($request->services);
