@@ -1,7 +1,7 @@
 @extends('layouts.login-register-template')
 
 @section('content')
-    <div class="container d-flex align-items-center justify-content-center bg-bg">
+    <div class="d-flex align-items-center justify-content-center min-vh-100 bg-bg">
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="card box-card">
