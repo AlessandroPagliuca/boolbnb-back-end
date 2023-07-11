@@ -4,9 +4,6 @@
     <section>
         <div class="wave-black fa-rotate-180"> </div>
         <div class="bg-pink text-white d-flex align-items-center justify-content-center flex-column" style="height: 300px">
-            <a class="m-1" href="{{ route('host.apartments.index') }}"><button
-                    class="btn btn-dark text-primary rounded-circle fs-4">
-                    <i class="fa-solid fa-arrow-left"></i></button></a>
             <h1 class="text-uppercase text-center py-3">choose the sponsorship that best suits you</h1>
 
         </div>
@@ -48,9 +45,13 @@
                                         <span class=" fw-light fs-6 text-decoration-line-through">8.99&euro;</span>
                                     @endif{{ $sponsor->price }}&euro;
                                 </p>
-                                <a class=" text-white text-decoration-none" href="#"><button
-                                        class="btn btn-success text-uppercase fw-semibold">sponsor for
-                                        {{ $sponsor->price }}&euro;</button></a>
+                                <a class="text-white text-decoration-none"
+                                    href="{{ route('host.sponsorships.show', ['sponsorship' => $sponsor->id]) }}">
+                                    <button class="btn btn-success text-uppercase fw-semibold">sponsor for
+                                        {{ $sponsor->price }}&euro;</button>
+                                </a>
+
+
                             </div>
                         </div>
                     </div>

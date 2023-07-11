@@ -21,24 +21,23 @@ class SponsorshipSeeder extends Seeder
                 'name' => 'Base',
                 'price' => 2.99,
                 'duration' => 24,
-                'description' => 'L\'abbonamento base con una durata di 24 ore a soli 2.99€ e la possibilità di mettere l\'annuncio in evidenza offre agli utenti un\'opportunità di promuovere i propri annunci in modo efficace e rapido. Questo abbonamento consente di ottenere maggiore visibilità per l\'annuncio, aumentando le possibilità di attirare potenziali acquirenti o affittuari.',
+                'description' => 'The basic subscription with a duration of 24 hours for only € 2.99 and the possibility to highlight the ad offers users an opportunity to promote their ads effectively and quickly. This subscription allows you to get more exposure for your ad, increasing your chances of attracting potential buyers or renters.',
             ],
             [
                 'name' => 'Medium',
                 'price' => 5.99,
                 'duration' => 72,
-                'description' => 'L\'abbonamento medium con una durata non più di 24h, ma 72 ore a soli 5.99€ e la possibilità di mettere l\'annuncio in evidenza offre agli utenti un\'opportunità di promuovere i propri annunci in modo efficace e rapido. Questo abbonamento consente di ottenere maggiore visibilità per l\'annuncio, aumentando le possibilità di attirare potenziali acquirenti o affittuari.',
+                'description' => 'The medium subscription with a duration of no more than 24 hours, but 72 hours for only €5.99 and the possibility of highlighting the ad offers users an opportunity to promote their ads effectively and quickly. This subscription allows you to get more exposure for your ad, increasing your chances of attracting potential buyers or renters.',
             ],
             [
                 'name' => 'Premium',
                 'price' => 9.99,
                 'duration' => 144,
-                'description' => 'L\'abbonamento premium con una durata non più di 24h o 72h ma 144 ore a soli 9.99€ e la possibilità di mettere l\'annuncio in evidenza offre agli utenti un\'opportunità di promuovere i propri annunci in modo efficace e rapido. Questo abbonamento consente di ottenere maggiore visibilità per l\'annuncio, aumentando le possibilità di attirare potenziali acquirenti o affittuari.',
+                'description' => 'The premium subscription with a duration of no more than 24h or 72h but 144 hours for only €9.99 and the possibility of highlighting the ad offers users an opportunity to promote their ads effectively and quickly. This subscription allows you to get more exposure for your ad, increasing your chances of attracting potential buyers or renters.',
             ],
 
         ];
 
         DB::table('sponsorships')->insert($sponsorships);
-
     }
 }
