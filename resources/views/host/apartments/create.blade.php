@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2 class="my-4">Add your apartments</h2>
+        <h2 class="my-4">Add you apartments</h2>
         <form class="fw-semibold" onsubmit="validateForm(event)" id="createForm"  action="{{ route('host.apartments.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row align-items-center justify-content-center">
