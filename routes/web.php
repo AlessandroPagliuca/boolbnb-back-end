@@ -30,13 +30,11 @@ Route::middleware(['auth', 'verified'])->name('host.')->prefix('host')->group(fu
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('apartments', ApartmentController::class)->parameters(['apartments' => 'apartment:slug']);
-
 });
 
 Route::middleware(['auth', 'verified'])->name('host.')->prefix('host')->group(function () {
 
     Route::resource('sponsorships', SponsorshipController::class);
-
 });
 
 // Route::middleware('auth')->group(function () {
