@@ -18,39 +18,39 @@ class ServiceSeeder extends Seeder
     {
         $services = [
             [
-                'name' => 'Wi-Fi gratuito',
+                'name' => 'Wi-Fi',
                 'icon' => 'wifi',
             ],
             [
-                'name' => 'Parcheggio privato',
+                'name' => 'Private parking',
                 'icon' => 'parking',
             ],
             [
-                'name' => 'Piscina',
+                'name' => 'Swimmer',
                 'icon' => 'swimmer',
             ],
             [
-                'name' => 'Aria condizionata',
+                'name' => 'ir conditioning',
                 'icon' => 'wind',
             ],
             [
-                'name' => 'Colazione inclusa',
+                'name' => 'Breakfast included',
                 'icon' => 'coffee',
             ],
             [
-                'name' => 'Servizio di pulizia',
+                'name' => 'Cleaning service',
                 'icon' => 'broom',
             ],
             [
-                'name' => 'Palestra',
+                'name' => 'Gym',
                 'icon' => 'dumbbell',
             ],
             [
-                'name' => 'Vista Mare',
+                'name' => 'Sea view',
                 'icon' => 'water',
             ],
             [
-                'name' => 'Giardino',
+                'name' => 'Garden',
                 'icon' => 'leaf',
             ],
             [
@@ -58,31 +58,31 @@ class ServiceSeeder extends Seeder
                 'icon' => 'stroopwafel ',// table-cells
             ],
             [
-                'name' => 'Riscaldamento',
+                'name' => 'Heating',
                 'icon' => 'temperature-high',
             ],
             [
-                'name' => 'Patio o balcone',
+                'name' => 'Patio o balcony',
                 'icon' => 'house-chimney-window',
             ],
             [
-                'name' => 'Biancheria da letto',
+                'name' => 'Change of sheets and towels everyday',
                 'icon' => 'rug',
             ],
             [
-                'name' => 'Doccia',
+                'name' => 'Shower',
                 'icon' => 'shower',
             ],
             [
-                'name' => 'Vasca',
+                'name' => 'Tub',
                 'icon' => 'bath',
             ],
             [
-                'name' => 'Lavatrice',
+                'name' => 'Washing machine',
                 'icon' => 'instagram fa-rotate-180',
             ],
             [
-                'name' => 'Asciugatrice',
+                'name' => 'Dryer',
                 'icon' => 'instagram fa-rotate-180',
             ],
             [
@@ -90,7 +90,7 @@ class ServiceSeeder extends Seeder
                 'icon' => 'tv',
             ],
             [
-                'name' => 'Cucina',
+                'name' => 'Kitchen',
                 'icon' => 'kitchen-set',
             ],
 
