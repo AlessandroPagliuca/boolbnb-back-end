@@ -21,6 +21,7 @@ use App\Http\Controllers\Api\MessageController;
 //     return $request->user();
 // });
 
+Route::get('/apartments/home', [ApartmentController::class, 'home']);
 Route::get('/apartments', [ApartmentController::class, 'index']);
 Route::get('/apartment/{slug}', [ApartmentController::class, 'show']);
 Route::post('/messages', [MessageController::class, 'store']);

@@ -10,32 +10,33 @@ class ApartmentController extends Controller
 {
     public function home()
     {
-        $apartments = Apartment::with('sponsorships')
-            ->whereHas('sponsorships', function ($query) {
-                $query->where('end_date', '>', now());
-            })
-            ->get();
+        $apartments = Apartment::with('sponsorships')->get();
+        $filteredApartments = $apartments->filter(function ($apartment) {
+            return $apartment->sponsorships->isNotEmpty();
+        });
 
         return response()->json([
             'status' => 'success',
             'message' => 'ok',
-            'results' => $apartments
+            'results' => $filteredApartments,
         ], 200);
     }
 
     public function index()
     {
-        $apartments = Apartment::all();
+        $apartments = Apartment::with('services')->get();
+
         return response()->json([
             'status' => 'success',
             'message' => 'ok',
-            'results' => $apartments
+            'data' => $apartments,
         ], 200);
     }
 
+
     public function show($slug)
     {
-        $apartment = Apartment::with('services', 'images')->where('slug', $slug)->first();
+        $apartment = Apartment::with('services')->where('slug', $slug)->first();
 
         if ($apartment) {
             return response()->json([
@@ -46,7 +47,7 @@ class ApartmentController extends Controller
         } else {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Apartment not found !'
+                'message' => 'Apartment not found!'
             ], 404);
         }
     }

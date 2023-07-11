@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container py-3">
+        <a class="m-1" href="{{ route('host.apartments.show', $apartment->slug) }}"><button
+                class="btn btn-primary text-white rounded-circle p-2 fs-4">
+                <i class="fa-solid fa-arrow-left"></i></button></a>
 
+        <h1 class="py-4">Edit your apartment: {{ $apartment->title }}</h1>
 
-        <h1>Edit your apartment: {{ $apartment->title }}</h1>
-        <a class="m-1" href="{{ route('host.apartments.show', $apartment->slug) }}"><button class="btn btn-warning">
-                Show</button></a>
 
         <form action="{{ route('host.apartments.update', $apartment->slug) }}" onsubmit="validateForm(event)" id="editForm" method="POST" enctype="multipart/form-data" class="row">
             @csrf
@@ -141,6 +142,8 @@
                 @endforeach
                 <div class="fs-3 text-danger" id="servicesError" ></div>
 
+
+
                 </div>
                 @error('services')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -155,11 +158,13 @@
             <button type="reset" class="btn btn-primary text-white">Reset</button>
             
         </div>
+
         </form>
     </div>
 @endsection
 
 <script>
+
         function validateForm(event) {
             event.preventDefault(); // Prevents default form submission behavior
 
@@ -182,3 +187,4 @@
 
         }
 </script>
+
