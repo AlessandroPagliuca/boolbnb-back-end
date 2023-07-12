@@ -2,6 +2,34 @@ $primary: #ff385c;
 $white: #ffffff;
 $black: #222222;
 
+// SCROLLBAR
+$scrollbar-width: 8px;
+$scrollbar-thumb-color: #ff385c;
+$scrollbar-thumb-hover-color: #f14766;
+$scrollbar-track-color: #222222;
+$scrollbar-border-radius: 5px;
+
+* {
+    &::-webkit-scrollbar {
+        width: $scrollbar-width;
+        background-color: $scrollbar-track-color;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $scrollbar-thumb-color;
+        border-radius: $scrollbar-border-radius;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: $scrollbar-thumb-hover-color;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: $scrollbar-track-color;
+        border-radius: $scrollbar-border-radius;
+    }
+}
+
 main {
     font-family: "Lexend Deca", sans-serif, Arial, Helvetica, sans-serif;
     background-color: #fff1f1;
@@ -32,6 +60,7 @@ main {
 
 .navbar {
     background-color: $black !important;
+
     .nav-item {
         a.nav-link {
             color: $white;
@@ -123,6 +152,7 @@ a:hover {
 }
 
 @keyframes slide1 {
+
     0%,
     100% {
         transform: translate(5px, 0);
@@ -132,6 +162,7 @@ a:hover {
         transform: translate(-5px, 0);
     }
 }
+
 // @media screen and (max-width: 1100px) {
 //     .card {
 //         min-height: 850px;
