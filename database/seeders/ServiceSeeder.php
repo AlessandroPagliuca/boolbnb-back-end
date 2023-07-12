@@ -22,7 +22,7 @@ class ServiceSeeder extends Seeder
                 'icon' => 'wifi',
             ],
             [
-                'name' => 'Private parking',
+                'name' => 'Parking',
                 'icon' => 'parking',
             ],
             [
@@ -30,15 +30,15 @@ class ServiceSeeder extends Seeder
                 'icon' => 'swimmer',
             ],
             [
-                'name' => 'ir conditioning',
+                'name' => 'Air conditioning',
                 'icon' => 'snowflake',
             ],
             [
-                'name' => 'Breakfast included',
+                'name' => 'Breakfast',
                 'icon' => 'coffee',
             ],
             [
-                'name' => 'Cleaning service',
+                'name' => 'Cleaning',
                 'icon' => 'broom',
             ],
             [
@@ -66,7 +66,7 @@ class ServiceSeeder extends Seeder
                 'icon' => 'house-chimney-window',
             ],
             [
-                'name' => 'Change of sheets and towels everyday',
+                'name' => 'Towels',
                 'icon' => 'rug',
             ],
             [
