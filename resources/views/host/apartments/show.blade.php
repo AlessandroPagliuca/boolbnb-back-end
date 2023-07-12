@@ -100,7 +100,7 @@
                     </div>
                     <div>
                         <p><span class="fw-bold text-uppercase">Price for night</span><br>
-                            {{ $apartment->price }}
+                            {{ $apartment->price }} &euro;
                         </p>
                     </div>
                     <div>
