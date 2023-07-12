@@ -5,10 +5,10 @@
         <div class="container-fluid py-4 d-flex align-items-center justify-content-between bg-apartment">
             <p class="m-0 text-white">
                 Hi
-                @if (empty(Auth::user()->name))
+                @if (empty(Auth::user()->name) && empty(Auth::user()->surname))
                     <span>User</span>
                 @else
-                    <span>{{ Auth::user()->name }}</span>
+                    <span>{{ Auth::user()->name }} {{ Auth::user()->surname }}</span>
                 @endif
                 , welcome to your personal area
             </p>

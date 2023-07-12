@@ -91,7 +91,7 @@ class ApartmentController extends Controller
         $viewDate = date('Y-m-d');
 
         // Ottieni l'indirizzo IP dell'utente
-        $addressIP = $request->ip();
+        $addressIP = $request->input('address_ip');
 
         // Effettua il salvataggio delle visualizzazioni nel database
         View::create([
