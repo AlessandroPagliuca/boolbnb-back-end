@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
 use App\Models\Message;
+use App\Models\View;
 
 class ApartmentController extends Controller
 {
@@ -78,5 +79,28 @@ class ApartmentController extends Controller
         }
     }
 
+    //FUNCTION PER GESTIRE LA VISUALIZZAZIONE RICEVUTI FRONT-END
+    public function storeView(Request $request)
+    {
+        // Valida i dati della richiesta
+        $request->validate([
+            'apartment_id' => 'required|exists:apartments,id',
+        ]);
 
+        // Ottieni la data corrente
+        $viewDate = date('Y-m-d');
+
+        // Ottieni l'indirizzo IP dell'utente
+        $addressIP = $request->ip();
+
+        // Effettua il salvataggio delle visualizzazioni nel database
+        View::create([
+            'view_date' => $viewDate,
+            'address_ip' => $addressIP,
+            'apartment_id' => $request->input('apartment_id'),
+        ]);
+
+        // Restituisci una risposta appropriata
+        return response()->json(['message' => 'Visualizzazione salvata correttamente.'], 201);
+    }
 }

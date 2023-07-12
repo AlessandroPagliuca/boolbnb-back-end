@@ -37,6 +37,8 @@ Route::middleware(['auth', 'verified'])->name('host.')->prefix('host')->group(fu
     Route::post('/sponsorship/add', [SponsorshipController::class, 'add'])->name('sponsorship.add');
 });
 
+Route::get('/apartments/{slug}/views', [ApartmentController::class, 'showViews'])->name('host.apartments.views');
+
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

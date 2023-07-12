@@ -55,7 +55,8 @@
                             <div class=" d-flex align-items-center justify-content-end">
 
                                 <div class=" d-sm-flex">
-                                    <a class="m-1 btn btn-success" href="{{ route('host.sponsorships.index') }}">
+                                    <a class="m-1 btn btn-success"
+                                        href="{{ route('host.apartments.views', $apartment->slug) }}">
                                         <i class="fa-solid fa-chart-line"></i>
                                     </a>
 

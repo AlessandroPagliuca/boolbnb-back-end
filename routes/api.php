@@ -25,3 +25,4 @@ Route::get('/apartments/home', [ApartmentController::class, 'home']);
 Route::get('/apartments', [ApartmentController::class, 'index']);
 Route::get('/apartment/{slug}', [ApartmentController::class, 'show']);
 Route::post('/apartment/{slug}/messages', [ApartmentController::class, 'storeMessage']);
+Route::post('/apartment/{slug}/views', [ApartmentController::class, 'storeView']);

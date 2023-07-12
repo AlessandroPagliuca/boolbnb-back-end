@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             ViewSeeder::class,
             ServiceSeeder::class,
             SponsorshipSeeder::class,
+            ViewSeeder::class,
         ]);
     }
 }
