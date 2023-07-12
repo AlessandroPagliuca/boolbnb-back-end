@@ -13,10 +13,11 @@ use App\Models\Service;
 use App\Models\Message;
 use App\Models\Sponsorship;
 use App\Models\User;
-use App\Models\View;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -91,26 +92,26 @@ class ApartmentController extends Controller
             ->get('https://api.tomtom.com/search/2/geocode/' . urlencode($api_query) . '.json', [
                 'key' => env('GEOCODING_API_KEY'),
             ]);
-        
-            if ($response->successful()) {
-                $responseData = $response->json();
-            
-                if (!empty($responseData['results'])) {
-                    $firstResult = $responseData['results'][0];
-            
-                    $form_data['latitude'] = $firstResult['position']['lat'];
-                    $form_data['longitude'] = $firstResult['position']['lon'];
-            
-                    // Use the $form_data['latitude'] and $form_data['longitude'] variables as needed
-                } else {
-                    // Handle the case when no results are available
-                }
-            } else {
-                $error = $response->json('error_message');
-                // Handle the error appropriately (e.g., show an error message to the user)
-            }
 
-            $newApartment = Apartment::create($form_data);
+        if ($response->successful()) {
+            $responseData = $response->json();
+
+            if (!empty($responseData['results'])) {
+                $firstResult = $responseData['results'][0];
+
+                $form_data['latitude'] = $firstResult['position']['lat'];
+                $form_data['longitude'] = $firstResult['position']['lon'];
+
+                // Use the $form_data['latitude'] and $form_data['longitude'] variables as needed
+            } else {
+                // Handle the case when no results are available
+            }
+        } else {
+            $error = $response->json('error_message');
+            // Handle the error appropriately (e.g., show an error message to the user)
+        }
+
+        $newApartment = Apartment::create($form_data);
 
         if ($request->has('services')) {
             $newApartment->services()->attach($request->services);
@@ -212,9 +213,43 @@ class ApartmentController extends Controller
 
         if ($apartment->user_id == Auth::id()) {
             $apartment->delete();
-
         }
 
         return redirect()->route('host.apartments.index'); //->with('message', "$apartment->title è stato cancellato con sucesso!");
+    }
+
+    public function showViews($slug)
+    {
+        // Recupera l'appartamento dal database utilizzando lo slug
+        $apartment = Apartment::where('slug', $slug)->firstOrFail();
+
+        // Recupera i dati delle visualizzazioni mensili dell'appartamento
+        $viewsData = $this->viewsData($apartment->getKey());
+
+        // Passa i dati alla vista
+        return view('host.apartments.views', compact('apartment', 'viewsData'));
+    }
+
+    public function viewsData($apartmentId)
+    {
+        $viewsData = DB::table('views')
+            ->select(DB::raw('MONTH(view_date) AS month'), DB::raw('COUNT(*) AS views'))
+            ->where('apartment_id', $apartmentId)
+            ->groupBy(DB::raw('MONTH(view_date)'))
+            ->orderBy(DB::raw('MONTH(view_date)'))
+            ->get();
+
+        $labels = [];
+        $data = [];
+
+        foreach ($viewsData as $view) {
+            $labels[] = $view->month;
+            $data[] = $view->views;
+        }
+
+        return [
+            'labels' => $labels,
+            'data' => $data,
+        ];
     }
 }
