@@ -33,8 +33,8 @@ Route::middleware(['auth', 'verified'])->name('host.')->prefix('host')->group(fu
 });
 
 Route::middleware(['auth', 'verified'])->name('host.')->prefix('host')->group(function () {
-
     Route::resource('sponsorships', SponsorshipController::class);
+    Route::post('/sponsorship/add', [SponsorshipController::class, 'add'])->name('sponsorship.add');
 });
 
 // Route::middleware('auth')->group(function () {

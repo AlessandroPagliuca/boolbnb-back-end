@@ -102,18 +102,33 @@
 
             // Altri controlli specifici (es. validità carta di credito)
 
-            // Mostra il modal dopo 2 secondi
-            setTimeout(function() {
-                var modal = new bootstrap.Modal(document.getElementById('paymentModal'));
-                modal.show();
-            }, 2000);
+            // Invia la richiesta al server per aggiungere la sponsorizzazione
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/host/sponsorship/add');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Sponsorizzazione aggiunta con successo, puoi mostrare il modal
+                    var modal = new bootstrap.Modal(document.getElementById('paymentModal'));
+                    modal.show();
 
-            // Reindirizza dopo 2 secondi
-            setTimeout(function() {
-                window.location.href = "{{ route('host.apartments.index') }}";
-            }, 5000);
+                    // Reindirizza dopo 2 secondi
+                    setTimeout(function() {
+                        window.location.href = "{{ route('host.apartments.index') }}";
+                    }, 2000);
+                } else {
+                    // La richiesta ha fallito, gestisci l'errore
+                    alert('Errore durante l\'aggiunta della sponsorizzazione. Si prega di riprovare.');
+                }
+            };
+            xhr.send(JSON.stringify({
+                cardNumber: cardNumber,
+                expiry: expiry,
+                cvv: cvv
+            }));
         });
     </script>
+
 </body>
 
 </html>

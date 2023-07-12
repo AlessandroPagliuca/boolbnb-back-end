@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Sponsorship;
 use App\Http\Requests\StoreSponsorshipRequest;
 use App\Http\Requests\UpdateSponsorshipRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class SponsorshipController extends Controller
 {
@@ -79,5 +81,24 @@ class SponsorshipController extends Controller
     public function destroy(Sponsorship $sponsorship)
     {
         //
+    }
+
+    public function add(Request $request)
+    {
+        // Creare la sponsorizzazione nel database
+        $sponsorship = new Sponsorship;
+        $sponsorship->save();
+
+        // Ottenere l'appartamento corrente
+        $apartment = $sponsorship->apartment;
+
+        // Salva la relazione nella tabella apartment_sponsorship
+        $apartment->sponsorships()->attach($sponsorship->id, [
+            'start_date' => now(),
+            'end_date' => now()->addHour($sponsorship->duration), // Modifica come desideri la durata della sponsorizzazione
+        ]);
+
+        // Ritorna una risposta di successo al client
+        return response()->json(['message' => 'Sponsorizzazione aggiunta con successo'], 200);
     }
 }
