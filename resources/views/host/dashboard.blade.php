@@ -1,26 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h2 class="fs-4 text-secondary py-4">
-        {{ __('Dashboard') }}
-    </h2>
-    <div class="row justify-content-center">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">{{ __('User Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
+    <div class="container vh-100-p">
+        <div class="text-center d-flex align-items-center justify-content-center h-100 flex-column">
+            <h1 class="pb-4">Welcome to <span class=" fw-bold text-primary">BackBoolbnb</span></h1>
+            <a class="btn btn-outline-primary btn-hover border-3 fw-semibold" href="http://localhost:5174/">
+                Go in BoolBnb
+            </a>
         </div>
     </div>
-</div>
 @endsection

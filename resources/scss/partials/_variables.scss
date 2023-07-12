@@ -145,6 +145,10 @@ main {
     padding-top: 76px;
 }
 
+.vh-100-p {
+    height: calc(100vh - 76px);
+}
+
 a:hover {
     .fa-arrow-left {
         animation: slide1 1s ease-in-out infinite;
