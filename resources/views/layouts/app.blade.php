@@ -43,7 +43,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             @auth
-                                @if (empty(Auth::user()->name))
+                                @if (empty(Auth::user()->name) && empty(Auth::user()->surname))
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle fit-content" href="#"
                                         role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                         v-pre>
@@ -53,7 +53,7 @@
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle fit-content" href="#"
                                         role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                         v-pre>
-                                        {{ Auth::user()->name }}
+                                        {{ Auth::user()->name }} {{ Auth::user()->surname }}
                                     </a>
                                 @endif
                             @endauth
