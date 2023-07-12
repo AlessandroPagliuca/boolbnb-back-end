@@ -82,45 +82,48 @@
 
                 <div class="col-12 col-md-6">
                     <div>
-                        <h6 class="mb-2 fw-bold text-uppercase">description</h6>
+                        <h5 class="mb-2 fw-bold text-uppercase">description</h5>
                         <p>
                             {{ $apartment->description }}
                         </p>
 
                     </div>
                     <div class="d-md-none">
-                        <h6 class="fw-bold mb-2">ROOMS</h6>
+                        <h5 class="fw-bold mb-2">ROOMS</h5>
                         <p>
                             <i class="fa-solid fa-person-shelter"></i> {{ $apartment->rooms }}
                         </p>
 
-                        <h6 class="fw-bold mb-2">BEDS</h6>
+                        <h5 class="fw-bold mb-2">BEDS</h5>
                         <p>
                             <i class="fa-solid fa-bed"></i> {{ $apartment->rooms }}
                         </p>
 
-                        <h6 class="fw-bold mb-2">BATHROOMS</h6>
+                        <h5 class="fw-bold mb-2">BATHROOMS</h5>
                         <p>
                             <i class="fa-solid fa-toilet"></i> {{ $apartment->bathrooms }}
                         </p>
 
-                        <h6 class="fw-bold mb-2">address</h6>
+                        <h5 class="fw-bold mb-2">address</h5>
                         <p>
                             {{ $apartment->address }}, {{ $apartment->city }},
                             {{ $apartment->zipcode }},{{ $apartment->country }}
                         </p>
-                        <p><span class="fw-bold text-uppercase">last update</span><br>
+                        <h5 class="fw-bold text-uppercase">last update</h5>
+                        <p>
                             {{ $apartment->updated_at }}
                         </p>
                     </div>
 
                     <div>
-                        <p><span class="fw-bold text-uppercase">Square meters</span><br>
+                        <h5 class="fw-bold text-uppercase">Square meters</h5>
+                        <p>
                             {{ $apartment->square_meters }} mq.
                         </p>
                     </div>
                     <div>
-                        <p><span class="fw-bold text-uppercase">Price for night</span><br>
+                        <h5 class="fw-bold text-uppercase">Price for night</h5>
+                        <p>
                             {{ $apartment->price }} &euro;
                         </p>
                     </div>
@@ -171,18 +174,22 @@
         </div>
         <!--Prova di recupero messaggio dal form nel front-end-->
         <div class="container">
-            <h2>Messages</h2>
+            <h2 class="mb-3">Messages</h2>
             <div class="row">
-                @foreach ($apartment->messages as $message)
-                    <div class="col-lg-6 mb-3">
-                        <div class="card my-3 shadow">
-                            <div class="card-body">
-                                <h5 class="card-title">Email: {{ $message->email }}</h5>
-                                <p class="card-text">Message: {{ $message->message }}</p>
+                @if (count($apartment->messages) > 0)
+                    @foreach ($apartment->messages as $message)
+                        <div class="col-lg-6 mb-3">
+                            <div class="card my-3 shadow">
+                                <div class="card-body">
+                                    <h5 class="card-title">Email: {{ $message->email }}</h5>
+                                    <p class="card-text">Message: {{ $message->message }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @else
+                    <em class="mb-3">non ci sono messaggi per te</em>
+                @endif
             </div>
         </div>
 
