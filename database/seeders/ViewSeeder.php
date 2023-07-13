@@ -17,11 +17,15 @@ class ViewSeeder extends Seeder
 
         $apartmentIds = DB::table('apartments')->pluck('id')->toArray();
 
-        for ($i = 0; $i < 200; $i++) {
-            $days = rand(1, 30);
-            $months = rand(0, 7);
+        $startDate = Carbon::createFromDate(Carbon::now()->subYear(), 8, 1);
+        $endDate = Carbon::now();
 
-            $viewDate = Carbon::now()->subMonths($months)->subDays($days);
+        $numberOfDays = $endDate->diffInDays($startDate);
+
+        for ($i = 0; $i < 200; $i++) {
+            $randomDays = rand(0, $numberOfDays);
+
+            $viewDate = $startDate->copy()->addDays($randomDays);
 
             $viewData = [
                 'apartment_id' => $apartmentIds[array_rand($apartmentIds)],
