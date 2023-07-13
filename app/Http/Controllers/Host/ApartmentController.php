@@ -165,7 +165,6 @@ class ApartmentController extends Controller
     {
         $data = $request->validated();
         $slug = Str::slug($request->title, '-');
-        $slug = Str::slug($request->title, '-');
         $uniqueSlug = $slug;
         $counter = 1;
 
@@ -258,5 +257,34 @@ class ApartmentController extends Controller
             'labels' => $labels,
             'data' => $data,
         ];
+    }
+    public function showpay($slug)
+    {
+
+        $apartment = Apartment::where('slug', $slug)->firstOrFail();
+        $sponsorships = Sponsorship::all();
+
+        return view('host.apartments.showpay', compact('apartment', 'sponsorships'));
+
+
+    }
+
+    public function payment($slug, $id)
+    {
+        $apartment = Apartment::where('slug', $slug)->firstOrFail();
+        $sponsorship = Sponsorship::find($id);
+
+        $startDate = now(); // Imposta la data di inizio come la data corrente
+        $endDate = $startDate->addHours($sponsorship->duration); // Calcola la data di fine aggiungendo la durata della sponsorizzazione in ore
+
+        // Sincronizza le sponsorizzazioni selezionate per l'appartamento con i campi aggiuntivi
+        $apartment->sponsorships()->sync([
+            $sponsorship->id => [
+                'start_date' => $startDate,
+                'end_date' => $endDate,
+            ]
+        ]);
+        return view('host.apartments.payment', compact('apartment', 'sponsorship'));
+
     }
 }

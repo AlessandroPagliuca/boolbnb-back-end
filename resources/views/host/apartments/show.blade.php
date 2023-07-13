@@ -32,7 +32,7 @@
             <div class="d-flex align-items-center gap-1">
                 <p class="text-uppercase py-3 fs-1 m-0">{{ $apartment->title }}</p>
                 <a class="btn btn-outline-primary btn-hover border-3 fw-semibold d-md-none"
-                    href="{{ route('host.sponsorships.index', $apartment->slug) }}">
+                    href="{{ route('host.apartments.showpay', $apartment->slug) }}">
                     Add sponsor
                 </a>
             </div>
@@ -71,7 +71,7 @@
 
                 <div class=" d-flex justify-content-center">
                     <a class="btn btn-outline-primary btn-hover border-3 fw-semibold"
-                        href="{{ route('host.sponsorships.index', $apartment->slug) }}">
+                        href="{{ route('host.apartments.showpay', $apartment->slug) }}">
                         Add sponsor
                     </a>
                 </div>
