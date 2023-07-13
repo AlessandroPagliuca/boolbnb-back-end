@@ -13,7 +13,7 @@ use App\Models\Service;
 use App\Models\Message;
 use App\Models\Sponsorship;
 use App\Models\User;
-use Illuminate\Support\Facades\View;
+use App\Models\View;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Http;
@@ -209,12 +209,16 @@ class ApartmentController extends Controller
 
     public function destroy(Apartment $apartment)
     {
-
         if ($apartment->user_id == Auth::id()) {
+            // Rimuovi le righe corrispondenti nella tabella views
+            View::where('apartment_id', $apartment->id)->delete();
+            // Rimuovi le righe corrispondenti nella tabella messages
+            Message::where('apartment_id', $apartment->id)->delete();
+            // Elimina l'appartamento
             $apartment->delete();
         }
 
-        return redirect()->route('host.apartments.index'); //->with('message', "$apartment->title è stato cancellato con sucesso!");
+        return redirect()->route('host.apartments.index');
     }
 
     public function showViews($slug)
