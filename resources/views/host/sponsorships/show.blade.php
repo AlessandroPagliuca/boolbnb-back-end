@@ -39,8 +39,8 @@
                     <div class="d-flex flex-column">
                         <p class="text mb-1">Card Number</p>
                         <input class="form-control mb-3 @error('cardNumberInput') is-invalid @enderror" type="text"
-                            name="cardNumberInput" placeholder="1234 5678 4356" id="cardNumberInput" required
-                            minlength="12" maxlength="12">
+                            name="cardNumberInput" placeholder="1234 5678 4356 7890" id="cardNumberInput" required
+                            minlength="16" maxlength="16">
                         @error('cardNumberInput')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
