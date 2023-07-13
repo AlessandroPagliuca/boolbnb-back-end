@@ -233,21 +233,28 @@ class ApartmentController extends Controller
     public function viewsData($apartmentId)
     {
         $viewsData = DB::table('views')
-            ->select(DB::raw('MONTH(view_date) AS month'), DB::raw('COUNT(*) AS views'))
+            ->select(DB::raw('YEAR(view_date) AS year'), DB::raw('MONTH(view_date) AS month'), DB::raw('COUNT(*) AS views'))
             ->where('apartment_id', $apartmentId)
-            ->groupBy(DB::raw('MONTH(view_date)'))
-            ->orderBy(DB::raw('MONTH(view_date)'))
+            ->groupBy(DB::raw('YEAR(view_date)'), DB::raw('MONTH(view_date)'))
+            ->orderBy(DB::raw('YEAR(view_date)'), 'ASC')
+            ->orderBy(DB::raw('MONTH(view_date)'), 'ASC')
             ->get();
 
         $labels = [];
         $data = [];
+        $year = null;
 
         foreach ($viewsData as $view) {
+            if ($year === null) {
+                $year = $view->year;
+            }
+
             $labels[] = $view->month;
             $data[] = $view->views;
         }
 
         return [
+            'year' => $year,
             'labels' => $labels,
             'data' => $data,
         ];

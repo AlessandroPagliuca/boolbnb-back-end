@@ -16,8 +16,8 @@
         <div class="bg-black text-white d-flex align-items-center justify-content-center py-5">
             <div class="row container-fluid">
                 @foreach ($sponsorships as $sponsor)
-                    <div class="col-12 col-lg-6 col-xl-4">
-                        <div class="card card-sponsor bg-dark-card text-white my-5 mx-0 mx-sm-5 mx-lg-0 d-flex flex-column">
+                    <div class="col-12 col-lg-6 col-xl-4 d-flex justify-content-center align-items-center m-auto">
+                        <div class="card card-sponsor bg-dark-card text-white my-5 mx-0 mx-sm-5 mx-lg-0">
                             <div class="border-bottom">
                                 <div class="m-auto d-flex align-content-center flex-column justify-content-center p-5">
                                     <img class="m-auto" src="{{ asset('/img/logo-boolbnb.png') }}"
