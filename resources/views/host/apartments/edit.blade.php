@@ -122,12 +122,16 @@
             </div>
             <div class="col-6 py-1">
                 <label class="d-block fw-bold" for="visible">Visibility:</label>
-                <input type="radio" id="visible" name="visible" value="1" checked>
+                <input type="radio" id="visible" name="visible" value="1"
+                    {{ old('visible', $apartment->visible) == 1 ? 'checked' : '' }}>
                 <label for="visible">Visible</label>
 
-                <input type="radio" id="not-visible" name="visible" value="0">
+                <input type="radio" id="not-visible" name="visible" value="0"
+                    {{ old('visible', $apartment->visible) == 0 ? 'checked' : '' }}>
                 <label for="not-visible">Not Visible</label>
             </div>
+
+
             <div class="form-group pt-3">
                 <div class="row flex-row align-items-center justify-content-center">
                     <div class="col-12">
