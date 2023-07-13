@@ -30,14 +30,14 @@ Route::middleware(['auth', 'verified'])->name('host.')->prefix('host')->group(fu
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('apartments', ApartmentController::class)->parameters(['apartments' => 'apartment:slug']);
-});
+    //Route::resource('sponsorships', SponsorshipController::class)->parameters(['sponsorships' => 'sponsorship:id']);
 
-Route::middleware(['auth', 'verified'])->name('host.')->prefix('host')->group(function () {
-    Route::resource('sponsorships', SponsorshipController::class);
-    Route::post('/sponsorship/add', [SponsorshipController::class, 'add'])->name('sponsorship.add');
 });
 
 Route::get('/apartments/{slug}/views', [ApartmentController::class, 'showViews'])->name('host.apartments.views');
+Route::get('/host/apartments/{slug}/showpay', [ApartmentController::class, 'showpay'])->name('host.apartments.showpay');
+Route::get('/host/apartments/showpay/{slug}/{id}/payment', [ApartmentController::class, 'payment'])->name('host.apartments.payment');
+
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

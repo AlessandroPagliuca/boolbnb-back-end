@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Host;
 
 use App\Http\Controllers\Controller;
 use App\Models\Sponsorship;
+use App\Models\Apartment;
 use App\Http\Requests\StoreSponsorshipRequest;
 use App\Http\Requests\UpdateSponsorshipRequest;
 use Illuminate\Support\Facades\Auth;
@@ -59,8 +60,25 @@ class SponsorshipController extends Controller
      */
     public function edit(Sponsorship $sponsorship)
     {
-        //
+        $apartment = Apartment::where('slug', $sponsorship->apartment_slug)->first();
+
+        // Verifica se l'appartamento è stato trovato
+        if ($apartment) {
+            $sponsorships = Sponsorship::all();
+
+            // Verifica se l'appartamento non ha già una sponsorizzazione
+            if (!$apartment->sponsorships->contains($sponsorship)) {
+                $apartment->sponsorships()->attach($sponsorship);
+            }
+
+            return view('host.sponsorships.edit', compact('apartment', 'sponsorships'));
+        } else {
+            // Gestisci il caso in cui l'appartamento non viene trovato
+            abort(404); // Ad esempio, genera un errore 404
+        }
     }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -83,22 +101,4 @@ class SponsorshipController extends Controller
         //
     }
 
-    public function add(Request $request)
-    {
-        // Creare la sponsorizzazione nel database
-        $sponsorship = new Sponsorship;
-        $sponsorship->save();
-
-        // Ottenere l'appartamento corrente
-        $apartment = $sponsorship->apartment;
-
-        // Salva la relazione nella tabella apartment_sponsorship
-        $apartment->sponsorships()->attach($sponsorship->id, [
-            'start_date' => now(),
-            'end_date' => now()->addHour($sponsorship->duration), // Modifica come desideri la durata della sponsorizzazione
-        ]);
-
-        // Ritorna una risposta di successo al client
-        return response()->json(['message' => 'Sponsorizzazione aggiunta con successo'], 200);
-    }
 }

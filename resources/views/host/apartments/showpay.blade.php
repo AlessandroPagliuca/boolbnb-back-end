@@ -46,10 +46,11 @@
                                     @endif{{ $sponsor->price }}&euro;
                                 </p>
                                 <a class="text-white text-decoration-none"
-                                    href="{{ route('host.sponsorships.show', ['sponsorship' => $sponsor->id]) }}">
+                                    href="{{ route('host.apartments.payment', ['slug' => $apartment->slug, 'id' => $sponsor->id]) }}">
                                     <button class="btn btn-success text-uppercase fw-semibold">sponsor for
                                         {{ $sponsor->price }}&euro;</button>
                                 </a>
+
 
 
                             </div>

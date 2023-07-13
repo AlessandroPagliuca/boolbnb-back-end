@@ -2,16 +2,9 @@
 
 @section('content')
     <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="d-flex flex-column justify-content-center align-items-end">
-            <form action="{{ route('host.sponsorships.add', ['slug' => $apartment->slug]) }}" method="POST">
-                @csrf
-                <div id="dropin-container"></div>
-                <input type="hidden" name="slug" value="{{ $apartment->slug }}">
-                <button class="btn btn-success text-uppercase fw-semibold">sponsor for
-                    {{ $sponsorship->price }}&euro;</button>
-            </form>
 
-        </div>
+        <div id="dropin-container"></div>
+        <button id="submit-button" class="button button--small button--green">Purchase</button>
     </div>
     <script>
         let button = document.querySelector('#submit-button');
@@ -22,10 +15,17 @@
         }, function(err, instance) {
             button.addEventListener('click', function() {
                 instance.requestPaymentMethod(function(err, payload) {
-                    // Submit payload.nonce to your server
-                    document.querySelector('form').submit();
+                    if (err) {
+                        console.error(err);
+                        return;
+                    }
+                    // Invia il payload.nonce al server per il pagamento con Braintree
+
+                    // Reindirizza all'appartamento dopo il completamento del pagamento
+                    window.location.href =
+                        "{{ route('host.apartments.show', ['apartment' => $apartment->slug]) }}";
                 });
-            })
+            });
         });
     </script>
 @endsection
