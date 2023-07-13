@@ -14,6 +14,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="https://js.braintreegateway.com/web/dropin/1.38.1/js/dropin.js"></script>
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
