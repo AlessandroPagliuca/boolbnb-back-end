@@ -6,6 +6,10 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Apartment;
+use App\Models\Service;
+use App\Models\Sponsorship;
+use Carbon\Carbon;
+
 
 class ApartmentSeeder extends Seeder
 {
@@ -191,6 +195,26 @@ class ApartmentSeeder extends Seeder
 
         ];
 
-        DB::table('apartments')->insert($apartments);
+
+        $services = Service::whereIn('id', range(1, 19))->inRandomOrder()->get();
+        $sponsorships = Sponsorship::inRandomOrder()->get();
+
+        foreach ($apartments as $apartment) {
+            $apartmentModel = Apartment::create($apartment);
+
+            $randomServices = $services->random(10);
+            $apartmentModel->services()->sync($randomServices->pluck('id'));
+
+            $randomSponsorship = $sponsorships->random();
+            $durationHours = $randomSponsorship->duration;
+
+            $startDate = Carbon::now();
+            $endDate = $startDate->copy()->addHours($durationHours);
+
+            $apartmentModel->sponsorships()->attach($randomSponsorship->id, [
+                'start_date' => $startDate,
+                'end_date' => $endDate,
+            ]);
+        }
     }
 }

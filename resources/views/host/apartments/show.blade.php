@@ -16,7 +16,10 @@
                 </a>
 
                 <div class=" d-flex">
-                    <a class="m-1 btn btn-success" href="{{ route('host.apartments.edit', $apartment->slug) }}">
+                    <a class="m-1 btn btn-success" href="{{ route('host.apartments.views', $apartment->slug) }}">
+                        View Chart
+                    </a>
+                    <a class="m-1 btn btn-warning" href="{{ route('host.apartments.edit', $apartment->slug) }}">
                         Edit
                     </a>
                     {{-- <a class="m-1 btn btn-warning" href="{{ route('host.apartments.index') }}">
@@ -89,6 +92,14 @@
 
                     </div>
                     <div class="d-md-none">
+                        <h5 class="fw-bold mb-2">VISIBLE</h5>
+                        <p>
+                            @if ($apartment->visible)
+                                Yes
+                            @else
+                                No
+                            @endif
+                        </p>
                         <h5 class="fw-bold mb-2">ROOMS</h5>
                         <p>
                             <i class="fa-solid fa-person-shelter"></i> {{ $apartment->rooms }}
@@ -143,16 +154,39 @@
                     <div class="my-3">
                         @if ($apartment->sponsorships && count($apartment->sponsorships) > 0)
                             <div>
-                                <p class="text-uppercase fw-bold fs-4 m-0">Sponsorship</p>
                                 @foreach ($apartment->sponsorships as $sponsorship)
+                                    <p class="text-uppercase fw-bold fs-4 m-0 mb-1">Sponsorship
+                                        @if ($sponsorship->name === 'Base')
+                                            <i class="fa-solid fa-crown text-copper"></i>
+                                        @elseif ($sponsorship->name === 'Medium')
+                                            <i class="fa-solid fa-crown text-silver"></i>
+                                        @elseif ($sponsorship->name === 'Premium')
+                                            <i class="fa-solid fa-crown text-warning"></i>
+                                        @endif
+                                    </p>
+
                                     <div>
-                                        <span>{{ $sponsorship->name }}</span>
-                                        <span>{{ $sponsorship->duration }} hours</span>
+                                        <p>Sponsor type: {{ $sponsorship->name }}</p>
+                                        <p>Start Date:
+                                            {{ \Carbon\Carbon::parse($sponsorship->pivot->start_date)->format('Y-m-d H:i:s') }}
+                                        </p>
+                                        <p>End Date:
+                                            {{ \Carbon\Carbon::parse($sponsorship->pivot->end_date)->format('Y-m-d H:i:s') }}
+                                        </p>
+
+                                        @if (\Carbon\Carbon::parse($sponsorship->pivot->end_date)->isPast())
+                                            <span class="text-danger">Your sponsorship has expired</span>
+                                        @endif
                                     </div>
                                 @endforeach
                             </div>
                         @endif
                     </div>
+
+
+
+
+
                 </div>
 
                 <div class="col-12 col-md-6">
