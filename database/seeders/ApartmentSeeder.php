@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Apartment;
 use App\Models\Service;
 use App\Models\Sponsorship;
+use Carbon\Carbon;
 
 
 class ApartmentSeeder extends Seeder
@@ -204,8 +205,16 @@ class ApartmentSeeder extends Seeder
             $randomServices = $services->random(10);
             $apartmentModel->services()->sync($randomServices->pluck('id'));
 
-            $randomSponsorships = $sponsorships->random(1);
-            $apartmentModel->sponsorships()->attach($randomSponsorships->pluck('id'));
+            $randomSponsorship = $sponsorships->random();
+            $durationHours = $randomSponsorship->duration;
+
+            $startDate = Carbon::now();
+            $endDate = $startDate->copy()->addHours($durationHours);
+
+            $apartmentModel->sponsorships()->attach($randomSponsorship->id, [
+                'start_date' => $startDate,
+                'end_date' => $endDate,
+            ]);
         }
     }
 }

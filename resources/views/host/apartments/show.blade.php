@@ -147,12 +147,20 @@
                                 @foreach ($apartment->sponsorships as $sponsorship)
                                     <div>
                                         <span>{{ $sponsorship->name }}</span>
-                                        <span>{{ $sponsorship->duration }} hours</span>
+                                        <span>Start Date: {{ $sponsorship->start_date }}</span>
+                                        <span>End Date: {{ $sponsorship->end_date }}</span>
+
+                                        @if ($sponsorship->end_date && $sponsorship->end_date->isPast())
+                                            <span class="text-danger">Your sponsor is Expired</span>
+                                        @endif
                                     </div>
                                 @endforeach
                             </div>
                         @endif
                     </div>
+
+
+
                 </div>
 
                 <div class="col-12 col-md-6">
