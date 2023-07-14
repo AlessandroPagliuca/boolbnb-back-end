@@ -269,8 +269,6 @@ class ApartmentController extends Controller
         $sponsorships = Sponsorship::all();
 
         return view('host.apartments.showpay', compact('apartment', 'sponsorships'));
-
-
     }
 
     public function payment($slug, $id)
@@ -278,17 +276,18 @@ class ApartmentController extends Controller
         $apartment = Apartment::where('slug', $slug)->firstOrFail();
         $sponsorship = Sponsorship::find($id);
 
-        $startDate = now(); // Imposta la data di inizio come la data corrente
-        $endDate = $startDate->addHours($sponsorship->duration); // Calcola la data di fine aggiungendo la durata della sponsorizzazione in ore
+        $startDate = now();
+        $endDate = $startDate->copy()->addHours($sponsorship->duration);
 
-        // Sincronizza le sponsorizzazioni selezionate per l'appartamento con i campi aggiuntivi
+        $startDateString = $startDate->toDateTimeString();
+        $endDateString = $endDate->toDateTimeString();
+
         $apartment->sponsorships()->sync([
             $sponsorship->id => [
-                'start_date' => $startDate,
-                'end_date' => $endDate,
+                'start_date' => $startDateString,
+                'end_date' => $endDateString,
             ]
         ]);
         return view('host.apartments.payment', compact('apartment', 'sponsorship'));
-
     }
 }

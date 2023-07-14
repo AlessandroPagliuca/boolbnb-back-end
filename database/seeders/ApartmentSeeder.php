@@ -6,6 +6,9 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Apartment;
+use App\Models\Service;
+use App\Models\Sponsorship;
+
 
 class ApartmentSeeder extends Seeder
 {
@@ -191,6 +194,18 @@ class ApartmentSeeder extends Seeder
 
         ];
 
-        DB::table('apartments')->insert($apartments);
+
+        $services = Service::whereIn('id', range(1, 19))->inRandomOrder()->get();
+        $sponsorships = Sponsorship::inRandomOrder()->get();
+
+        foreach ($apartments as $apartment) {
+            $apartmentModel = Apartment::create($apartment);
+
+            $randomServices = $services->random(10);
+            $apartmentModel->services()->sync($randomServices->pluck('id'));
+
+            $randomSponsorships = $sponsorships->random(1);
+            $apartmentModel->sponsorships()->attach($randomSponsorships->pluck('id'));
+        }
     }
 }
