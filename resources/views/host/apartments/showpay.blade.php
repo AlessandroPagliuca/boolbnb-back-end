@@ -3,7 +3,12 @@
 @section('content')
     <section>
         <div class="wave-black fa-rotate-180"> </div>
+
         <div class="bg-pink text-white d-flex align-items-center justify-content-center flex-column" style="height: 300px">
+            <a class="" href="{{ route('host.apartments.index') }}"><button
+                    class="btn btn-light text-primary rounded-circle fs-4">
+                    <i class="fa-solid fa-arrow-left"></i></button>
+            </a>
             <h1 class="text-uppercase text-center py-3">choose the sponsorship that best suits you</h1>
 
         </div>

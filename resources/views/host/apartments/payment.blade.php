@@ -1,7 +1,7 @@
 @extends('layouts.login-register-template')
 
 @section('content')
-    <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="container d-flex justify-content-center align-items-center flex-column vh-100">
 
         <div id="dropin-container"></div>
         <button id="submit-button" class="button button--small button--green">Purchase</button>
@@ -22,8 +22,10 @@
                     // Invia il payload.nonce al server per il pagamento con Braintree
 
                     // Reindirizza all'appartamento dopo il completamento del pagamento
-                    window.location.href =
-                        "{{ route('host.apartments.show', ['apartment' => $apartment->slug]) }}";
+                    setTimeout(function() {
+                        window.location.href =
+                            "{{ route('host.apartments.show', ['apartment' => $apartment->slug]) }}";
+                    }, 1500);
                 });
             });
         });
