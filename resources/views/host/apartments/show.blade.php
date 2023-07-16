@@ -222,7 +222,7 @@
                         </div>
                     @endforeach
                 @else
-                    <em class="mb-3">non ci sono messaggi per te</em>
+                    <em class="mb-3">no messages for you</em>
                 @endif
             </div>
         </div>
