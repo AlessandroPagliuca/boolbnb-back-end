@@ -2,7 +2,14 @@
 
 @section('content')
     <div class="container min-vh-100">
-        <h1 class="text-center py-3"><span class="text-primary">Views Chart</span> - {{ $apartment->title }}</h1>
+        <div class=" d-flex align-items-center justify-content-between py-3">
+            <a class="" href="{{ route('host.apartments.index') }}"><button
+                    class="btn btn-primary text-white rounded-circle fs-4">
+                    <i class="fa-solid fa-arrow-left"></i></button>
+            </a>
+            <h1 class="text-center py-3"><span class="text-primary">Views Chart</span> - {{ $apartment->title }}</h1>
+        </div>
+
 
         <canvas id="myChart"></canvas>
     </div>
